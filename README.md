@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# [Your Name] - Portfolio
 
-## Getting Started
+Welcome to my portfolio! Here you'll find a showcase of my work as a Full Stack Developer, including past projects and personal initiatives.
 
-First, run the development server:
+## About Me
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+I am a Full Stack Developer with over three years of experience building scalable and dynamic web applications. I have worked on a range of projects, from fintech apps like WakandaPay to creating management systems for organizations. I specialize in frontend technologies like React, TypeScript, and Node.js, while also having a strong background in backend development and cloud technologies like AWS and Cloudflare D1.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+In addition to my professional work, I actively contribute to open-source projects, taking on bug bounties and enhancing my skills with Go-based applications. My passion lies in creating user-centered designs while focusing on performance, security, and scalability.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Here are the technologies and tools I work with:
 
-## Learn More
+- **Frontend**: React, TypeScript, Redux, Next.js, TailwindCss, Nuxt, 
+- **Backend**: Node.js, Nest.js, Go (basic), Payload CMS, REST APIs, GraphQL
+- **Mobile**: React Native, Expo
+- **Cloud & DevOps**: AWS (SES, SNS, etc.), Cloudflare D1
+- **Testing**: Jest
+- **Tools**: Git, Webpack, Docker, VS Code, Xcode, Ngnix, Swagger
 
-To learn more about Next.js, take a look at the following resources:
+## Social Links
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [LinkedIn](https://www.linkedin.com/in/jamesmorgan-thehoracle)
+- [X formerly Twitter](https://x.com/theHoracle)
+- [Mail](mailto:jamestheHoracle@gmail.com)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
+Feel free to reach out if you'd like to collaborate or learn more about my work. I'm always open to exciting new opportunities!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Thank you for visiting my portfolio!
+[![](https://visitcount.itsvg.in/api?id=theHoracle&icon=0&color=0)](https://visitcount.itsvg.in)
