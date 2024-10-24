@@ -4,7 +4,6 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
-import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 
@@ -54,7 +53,7 @@ function InquiryForm() {
         <FormItem>
           <FormLabel>Email</FormLabel>
           <FormControl>
-            <Input placeholder="horacle@mail.com" {...field} />
+            <Input placeholder="horacle@mail.com" type="text" {...field} />
           </FormControl>
           <FormDescription>
             Email is required for us to get back to you.
