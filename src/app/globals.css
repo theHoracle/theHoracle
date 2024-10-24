@@ -70,3 +70,57 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.button-gradient {
+  --black: #0000008b;
+  --radius: 50px;
+  --rotate: 10deg;
+  padding: 20px 30px;
+  border-radius: var(--radius);
+  position: relative;
+  border: 0;
+  background: var(--black);
+  overflow: hidden;
+  .fancy-button {
+    position: absolute;
+    inset: 0;
+    
+  }
+  .fancy-button::before {
+    content: "";
+    background: conic-gradient(from var(--rotate), transparent 0%, rgb(124, 124, 124) 5%, transparent 10%);
+    position: absolute;
+    inset: 0;
+    animation: rotate 2s linear infinite;
+  }
+  .fancy-button::after {
+    content: "";
+    background: #030303;
+    position: absolute;
+    inset: 2px;
+    border-radius: calc(var(--radius) - 2px);
+  }
+}
+@keyframes rotate {
+  to {
+    --rotate: 360deg
+  }
+}
+
+.active .nav-indicator {
+  width: 4rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.active .nav-text {
+  --tw-text-opacity: 1;
+  color: rgb(226 232 240 / var(--tw-text-opacity));
+}

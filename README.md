@@ -1,4 +1,4 @@
-# [James Morgan O.] - Portfolio
+# [James Morgan] - Portfolio
 
 Welcome to my portfolio! Here you'll find a showcase of my work as a Full Stack Developer, including past projects and personal initiatives.
 

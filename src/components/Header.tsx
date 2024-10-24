@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { SocialIcon } from "react-social-icons";
+import SpecialNav from "./SpecialNav";
 
 function Header() {
   const socialLinks = [
@@ -12,6 +13,18 @@ function Header() {
       name: "GitHub",
       link: "https://www.github.com/theHoracle",
     },
+    {
+      name: "X",
+      link: "https://www.x.com/theHoracle",
+    },
+    {
+      name: "Instagram",
+      link: "https://www.instagram.com/the.horacle",
+    },
+   {
+      name: "Upwork",
+      link: "https://www.upwork.com/freelancers/~012b399dc9a7e9e821",
+   }
   ];
   return (
     <div className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-24">
@@ -25,21 +38,9 @@ function Header() {
         <p className="text-lg text-muted-foreground mt-4">
           Innovating with the next gen technologies.
         </p>
-        <nav className="hidden lg:block">
-          <ul className="mt-16 w-max">
-            <li>
-              <Link href="#about">About Me</Link>
-            </li>
-            <li>
-              <Link href="#projects">Projects</Link>
-            </li>
-            <li>
-              <Link href="#contact">Contact</Link>
-            </li>
-          </ul>
-        </nav>
+        <SpecialNav />
       </div>
-      <ul className="mt-8 -ml-4 flex items-center">
+      <ul className="mt-8 -ml-4 -mb-1 flex items-center">
         {socialLinks.map((link) => (
           <li key={link.name} className="">
             <p className="sr-only">{link.name}</p>
