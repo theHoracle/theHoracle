@@ -1,4 +1,4 @@
-# [Your Name] - Portfolio
+# [James Morgan O.] - Portfolio
 
 Welcome to my portfolio! Here you'll find a showcase of my work as a Full Stack Developer, including past projects and personal initiatives.
 
@@ -32,4 +32,5 @@ Feel free to reach out if you'd like to collaborate or learn more about my work.
 ---
 
 Thank you for visiting my portfolio!
+<br />
 [![](https://visitcount.itsvg.in/api?id=theHoracle&icon=0&color=0)](https://visitcount.itsvg.in)
