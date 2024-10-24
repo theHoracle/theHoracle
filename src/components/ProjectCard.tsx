@@ -40,9 +40,11 @@ function ProjectCard({ project }: ProjectCardProps) {
           sequi repellendus recusandae quos cupiditate facilis ut. Consequatur
           est facilis expedita aperiam architecto.
         </p>
-        <ul className="flex-wrap flex space-x-2 space-y-2" aria-label="Technologies used">
+        <ul className="flex-wrap flex " aria-label="Technologies used">
           {project.skills.map((skill, index) => (
-            <li key={index}>
+            <li key={index}
+            className="mr-1.5 mt-2"
+            >
               <div className="flex items-center rounded-full bg-red-400/20 dark:bg-red-400/10 px-3 py-1 text-xs font-medium leading-5 text-red-500 dark:text-red-300">
                 {skill}
               </div>
