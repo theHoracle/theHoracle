@@ -37,7 +37,7 @@ export default function SpecialNav() {
   }, []);
 
   return (
-    <nav className="">
+    <nav className="hidden lg:block">
       <ul className="mt-16 w-max">
         {jumpLinks.map((link) => (
           <li key={link.href} className="mb-2">
