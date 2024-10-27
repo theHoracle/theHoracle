@@ -3,7 +3,12 @@ import Contact from "@/components/Contact";
 import Header from "@/components/Header";
 import MouseGradient from "@/components/MouseGradient";
 import Projects from "@/components/Projects";
+import { Metadata } from "next";
 // import { fetchGithubRepos } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "<theHoracle /> - Portfolio Overview",
+}
 
 export default async function Home() {
   // const repos = await fetchGithubRepos('theHoracle')

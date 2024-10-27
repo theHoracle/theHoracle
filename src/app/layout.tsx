@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ensureStartsWith } from "@/lib/utils";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,13 +24,12 @@ const twitterSite = TWITTER_SITE ? ensureStartsWith(TWITTER_SITE, 'https://') : 
 
 
 export const metadata: Metadata = {
-  title: "James Morgan <theHoracle />",
+  title: {
+    default: SITE_NAME!,
+    template: `%s | ${SITE_NAME}`
+  },
   description: "Portfolio | Resume - James Morgan <theHoracle />",
   metadataBase: new URL(baseUrl),
-  // title: {
-  //   default: SITE_NAME!,
-  //   template: `%s | ${SITE_NAME}`
-  // },
   robots: {
     follow: true,
     index: true
