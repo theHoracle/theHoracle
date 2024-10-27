@@ -69,7 +69,7 @@ function InquiryForm() {
         <FormItem>
           <FormLabel>Message</FormLabel>
           <FormControl>
-            <Textarea placeholder="Want to make an inquiry, message us?" className="bg-background" {...field} />
+            <Textarea placeholder="Want to make an inquiry, send a message?" className="bg-background" {...field} />
           </FormControl>
           <FormDescription>
             Send a message, we will be sure to get back to you.

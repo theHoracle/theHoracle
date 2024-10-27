@@ -6,7 +6,7 @@ function Projects() {
   const projects: Project[] = [
     {
       title: "Latunji Photography Portfolio",
-      description: "",
+      description: "A photography portfolio site, allowing the photographer to showcase projects, manage images, and update content easily. Includes a pricing section with default rates and flexible contact options for custom quotes.",
       imageUrl: "/project-image/thelatunji.png",
       homepage: "https://photography-portfolio-kohl.vercel.app",
       language: "typescript",
@@ -14,11 +14,11 @@ function Projects() {
     },
     {
       title: "Hope Chapel",
-      description: "",
+      description: "Web app that enables church staff to manage content, send newsletters to subscribers, and oversee team information and media uploads. Focused on easy updates and streamlined communication for the church community.",
       imageUrl: "/project-image/hope-chapel.png",
       homepage: "https://hope-chapel-raleigh.vercel.app",
       language: "typescript",
-      skills: ["Nextjs", "Payload CMS", "Axios", "Docker", "AWS", "API"],
+      skills: ["Nextjs", "Payload CMS", "Axios", "Docker", "AWS"],
     },
   ];
 

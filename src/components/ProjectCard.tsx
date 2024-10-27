@@ -35,10 +35,7 @@ function ProjectCard({ project }: ProjectCardProps) {
           </span>
         </Link>
         <p className="mt-2 text-sm leading-normal text-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-          aspernatur eaque sapiente illum! Blanditiis quidem nostrum minima
-          sequi repellendus recusandae quos cupiditate facilis ut. Consequatur
-          est facilis expedita aperiam architecto.
+          {project.description}
         </p>
         <ul className="flex-wrap flex " aria-label="Technologies used">
           {project.skills.map((skill, index) => (
