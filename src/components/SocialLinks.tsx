@@ -1,11 +1,18 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { SocialIcon } from 'react-social-icons'
 
 function SocialLinks({link}: {link: string} ) {
     const [hover, setHover] = useState(false)
-    const fgColor = (document && document.documentElement.classList.contains('dark')) ? '#E2E8F0' : '#DC2626'
+    const [fgColor, setFgColor] = useState('#DC2626')
+    
+    useEffect(() => {
+      if(document && document.documentElement.classList.contains('dark')) {
+        setFgColor('#E2E8F0')
+      }
+    }, [])
+
     
   return (
     <SocialIcon
