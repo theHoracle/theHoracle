@@ -9,13 +9,13 @@ import { Textarea } from "./ui/textarea";
 
 function Contact() {
   return <section id="contact">
-    <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-stone-900/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+    <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-red-800/75 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
         <h2 className="text-sm font-bold uppercase tracking-widest text-slate-200 lg:sr-only">
           Make Inquiry
         </h2>
       </div>
       <div className="relative group mb-5">
-      <div className="absolute -inset-x-4 border  -inset-y-4 -z-10 hidden rounded-md transition motion-reduce:transition-none lg:-inset-6 lg:block lg:group-hover:bg-stone-800/20 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
+      <div className="absolute -inset-x-4 border  -inset-y-4 -z-10 hidden rounded-md transition motion-reduce:transition-none lg:-inset-6 lg:block dark:lg:group-hover:bg-stone-800/30 lg:group-hover:bg-red-800/20 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
     <InquiryForm />
       </div>
   </section>;
@@ -53,7 +53,7 @@ function InquiryForm() {
         <FormItem>
           <FormLabel>Email</FormLabel>
           <FormControl>
-            <Input placeholder="horacle@mail.com" type="text" {...field} />
+            <Input placeholder="horacle@mail.com" className="bg-background" type="text" {...field} />
           </FormControl>
           <FormDescription>
             Email is required for us to get back to you.
@@ -69,7 +69,7 @@ function InquiryForm() {
         <FormItem>
           <FormLabel>Message</FormLabel>
           <FormControl>
-            <Textarea placeholder="Hi, how are you doing today?" {...field} />
+            <Textarea placeholder="Want to make an inquiry, message us?" className="bg-background" {...field} />
           </FormControl>
           <FormDescription>
             Send a message, we will be sure to get back to you.
@@ -83,7 +83,7 @@ function InquiryForm() {
     
     >
       <div className="fancy-button flex items-center justify-center">
-        <span className="relative z-10">
+        <span className="relative z-10 text-stone-200">
           Submit
         </span>
       </div>

@@ -6,6 +6,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const ensureStartsWith = (stringToCheck: string, startsWith: string) =>
+  stringToCheck.startsWith(startsWith) ? stringToCheck : `${startsWith}${stringToCheck}`;
+
+
 export async function fetchGithubRepos(username: string) {
   try {
     const headers = {

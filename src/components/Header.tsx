@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import { SocialIcon } from "react-social-icons";
+
 import SpecialNav from "./SpecialNav";
+import SocialLinks from "./SocialLinks";
 
 function Header() {
   const socialLinks = [
@@ -36,7 +37,7 @@ function Header() {
           Full-Stack Developer
         </h2>
         <p className="text-lg text-muted-foreground mt-4">
-          Innovating with the next gen technologies.
+          Innovating with next gen technologies.
         </p>
         <SpecialNav />
       </div>
@@ -44,13 +45,7 @@ function Header() {
         {socialLinks.map((link) => (
           <li key={link.name} className="">
             <p className="sr-only">{link.name}</p>
-            <SocialIcon
-              url={link.link}
-              target="_blank"
-              fgColor="gray"
-              className="fill-stone-600 hover:fill-stone-200 size-8"
-              bgColor="transparent"
-            />
+            <SocialLinks link={link.link} />
           </li>
         ))}
       </ul>
