@@ -46,19 +46,24 @@ function InquiryForm() {
  
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    form.reset()
     const result = await sendContactMeMail({
-      fromAddress: values.email,
       subject: values.subject,
-      body: values.message
+      body: values.message,
+      replyToAddresses: [values.email]
     })
     if(result?.success) {
+      form.reset()
       toast({
         title: "Message sent successfully",
         description: "We will get back to you as soon as possible."
       })
-    }
-    console.log(values)
+      return
+    } 
+    toast({
+        title: "Message failed to send",
+        description: "Please try again later."
+    })
+    return;
   }
 
   return  <Form {...form}>

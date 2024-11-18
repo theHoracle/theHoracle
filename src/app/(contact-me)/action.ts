@@ -5,18 +5,20 @@ import { createSendEmailCommand } from "@/lib/SES/utils"
 import { MessageRejected } from "@aws-sdk/client-ses"
 
 type SendContactMeMailProps = {
-    fromAddress: string,
     subject: string,
     body: string
+    replyToAddresses: string[]
 }
-export const sendContactMeMail = async ({fromAddress, body, subject}: SendContactMeMailProps) => {
+export const sendContactMeMail = async ({ body, subject, replyToAddresses}: SendContactMeMailProps) => {
     const toAddress = process.env.CONTACT_ME_EMAIL!
+    const fromAddress = process.env.CONTACT_ME_EMAIL!
     try {
         const sendEmailHelper = createSendEmailCommand({
             toAddress,
             fromAddress,
             subject,
-            body
+            body,
+            replyToAddresses
         }) 
         await sesClient.send(sendEmailHelper)
         return {
