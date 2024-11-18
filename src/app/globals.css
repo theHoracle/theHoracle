@@ -78,6 +78,11 @@ body {
   inherits: false;
 }
 
+@property --rotate-reverse {
+  syntax: "<angle>";
+  initial-value: 360deg;
+  inherits: false;
+}
 .button-gradient {
   --black: #0000008b;
   --radius: 50px;
@@ -91,11 +96,21 @@ body {
   .fancy-button {
     position: absolute;
     inset: 0;
-    
+  }
+  .reverse-fancy-button {
+    position: absolute;
+    inset: 0;
   }
   .fancy-button::before {
     content: "";
     background: conic-gradient(from var(--rotate), transparent 0%, rgb(138, 138, 138) 5%, transparent 10%);
+    position: absolute;
+    inset: 0;
+    animation: rotate 2s linear infinite;
+  }
+  .reverse-fancy-button::before {
+    content: "";
+    background: conic-gradient(from var(--rotate), transparent 0%, rgb(78, 8, 8) 5%, transparent 10%);
     position: absolute;
     inset: 0;
     animation: rotate 2s linear infinite;
@@ -107,10 +122,23 @@ body {
     inset: 2px;
     border-radius: calc(var(--radius) - 2px);
   }
+  .reverse-fancy-button::after {
+    content: "";
+    background: #030303;
+    position: absolute;
+    inset: 2px;
+    border-radius: calc(var(--radius) - 2px);
+  }
 }
 @keyframes rotate {
   to {
     --rotate: 360deg
+  }
+}
+
+@keyframes rotate {
+  to {
+    --rotate-reverse: 0deg
   }
 }
 

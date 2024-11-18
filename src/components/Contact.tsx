@@ -6,6 +6,8 @@ import { z } from "zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { sendContactMeMail } from "@/app/(contact-me)/action";
+import { useToast } from "@/hooks/use-toast";
 
 function Contact() {
   return <section id="contact">
@@ -25,22 +27,37 @@ export default Contact;
 
 const formSchema = z.object({
   email: z.string().email(),
+  subject: z.string().min(2).max(50),
   message: z.string().min(10).max(500),
 })
 
 function InquiryForm() {
+  const { toast } = useToast()
+  
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
+      subject: "",
       message: "",
     },
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    form.reset()
+    const result = await sendContactMeMail({
+      fromAddress: values.email,
+      subject: values.subject,
+      body: values.message
+    })
+    if(result?.success) {
+      toast({
+        title: "Message sent successfully",
+        description: "We will get back to you as soon as possible."
+      })
+    }
     console.log(values)
   }
 
@@ -64,6 +81,22 @@ function InquiryForm() {
     />
     <FormField
       control={form.control}
+      name="subject"
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>Subject</FormLabel>
+          <FormControl>
+            <Input placeholder="What is yout reason for contacting us?" className="bg-background" {...field} />
+          </FormControl>
+          <FormDescription>
+            Send a message, we will be sure to get back to you.
+          </FormDescription>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+    <FormField
+      control={form.control}
       name="message"
       render={({ field }) => (
         <FormItem>
@@ -80,9 +113,9 @@ function InquiryForm() {
     />
     <button type="submit"
     className="button-gradient w-24"
-    
+    disabled={form.formState.isSubmitting}
     >
-      <div className="fancy-button flex items-center justify-center">
+      <div className={`${form.formState.isSubmitting ? 'reverse-fancy-button' : 'fancy-button'} flex items-center justify-center`}>
         <span className="relative z-10 text-stone-200">
           Submit
         </span>
