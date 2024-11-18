@@ -21,7 +21,7 @@ const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   : 'http://localhost:3000';
 const twitterCreator = TWITTER_CREATOR ? ensureStartsWith(TWITTER_CREATOR, '@') : undefined;
 const twitterSite = TWITTER_SITE ? ensureStartsWith(TWITTER_SITE, 'https://') : undefined;
-
+const ogImage = `${baseUrl}/opengraph-image.png`
 
 export const metadata: Metadata = {
   title: {
@@ -39,9 +39,27 @@ export const metadata: Metadata = {
       twitter: {
         card: 'summary_large_image',
         creator: twitterCreator,
-        site: twitterSite
+        site: twitterSite,
+        description: 'All about <theHoracle />',
+        images: [ogImage]
       }
-    })
+    }),
+  openGraph: {
+    title: SITE_NAME!,
+    description: "All about <theHoracle />",
+    url: baseUrl,
+    siteName: SITE_NAME!,
+    images: [
+      {
+        url: ogImage,
+        width: 1280,
+        height: 684,
+        alt: 'James Morgan <theHoracle />'
+      }
+    ],
+    locale: 'en_US',
+    type: 'website'
+  }
 };
 
 export default function RootLayout({

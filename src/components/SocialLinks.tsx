@@ -20,7 +20,7 @@ function SocialLinks({link}: {link: string} ) {
               onMouseLeave={() => setHover(false)}
               url={link}
               target="_blank"
-              fgColor={!hover ? 'gray' : fgColor}
+              fgColor={hover ? fgColor : 'gray' }
               className="fill-stone-600 hover:fill-stone-200 size-8"
               bgColor="transparent"
             />

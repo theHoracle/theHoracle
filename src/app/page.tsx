@@ -7,7 +7,7 @@ import { Metadata } from "next";
 // import { fetchGithubRepos } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "<theHoracle /> - Portfolio Overview",
+  title: "Portfolio Overview",
 }
 
 export default async function Home() {
