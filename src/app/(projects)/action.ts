@@ -6,18 +6,33 @@ type GetScreenshotsProps = {
     url: string
 }
 
-export const getScreenshots = async ({ 
-    url 
-}: GetScreenshotsProps ) => {
+export const getScreenshots = async ({ url }: GetScreenshotsProps) => {
     try {
-        const response = await screenshotClient.generateTakeURL(takeScreenshotOptions({
-            url
-        }))
-        const imageobj = await fetch(url)
-        const { cache_url } = await JSON.parse(await imageobj.text())
-        return cache_url
+        // Generate the screenshot URL
+        const response = await screenshotClient.generateTakeURL(
+            takeScreenshotOptions({ url })
+        );
+
+        // Fetch the generated screenshot data
+        const imageResponse = await fetch(response, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }); // Corrected to use response.url instead of `url`
+
+        // Check the Content-Type to ensure it's JSON
+        const contentType = imageResponse.headers.get('Content-Type');
+        if (!contentType || !contentType.includes('application/json')) {
+            throw new Error(`Unexpected response type: ${contentType}`);
+        }
+
+        const { cache_url } = await imageResponse.json();
+
+        console.log('Screenshot generated:', response, 'Cache URL:', cache_url);
+        return cache_url;
     } catch (error) {
-       console.log(error)
-       return; 
-    }   
-}
+        console.error('Error generating screenshot:', error);
+        return null; 
+    }
+};
