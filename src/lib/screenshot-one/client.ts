@@ -22,6 +22,8 @@ export const takeScreenshotOptions = ({
     url,
     format = 'png',
     quality = 80,
+    width = 1280,
+    height = 720
 }: TakeScreenshotOptions) => {
     return screenshotone.TakeOptions.url(url)
     .delay(0)
@@ -32,6 +34,8 @@ export const takeScreenshotOptions = ({
     .blockCookieBanners(true)
     .blockTrackers(true)
     .imageQuality(quality)
+    .viewportWidth(width)
+    .viewportHeight(height)
     .responseType('json')
     .styles('html%20%7Bcolor-scheme%3A%20dark%7D%3B%0A')
     .scripts("document.documentElement.classList.add('dark')");

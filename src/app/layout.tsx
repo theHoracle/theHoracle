@@ -1,65 +1,59 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ensureStartsWith } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import { Geist, Geist_Mono } from 'next/font/google'
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+const geist = Geist({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+
 
 const { TWITTER_CREATOR, TWITTER_SITE, SITE_NAME } = process.env;
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-  : 'http://localhost:3000';
 const twitterCreator = TWITTER_CREATOR ? ensureStartsWith(TWITTER_CREATOR, '@') : undefined;
 const twitterSite = TWITTER_SITE ? ensureStartsWith(TWITTER_SITE, 'https://') : undefined;
-const ogImage = `${baseUrl}/opengraph-image.png`
 
 export const metadata: Metadata = {
   title: {
     default: SITE_NAME!,
     template: `%s | ${SITE_NAME}`
   },
-  description: "Portfolio | Resume - James Morgan <theHoracle />",
-  metadataBase: new URL(baseUrl),
+  description: "Portfolio | Resume | Blog - James Morgan <theHoracle />",
+  metadataBase: new URL(twitterSite!),
   robots: {
     follow: true,
     index: true
   },
-  ...(twitterCreator &&
-    twitterSite && {
-      twitter: {
-        card: 'summary_large_image',
-        creator: twitterCreator,
-        site: twitterSite,
-        description: 'All about <theHoracle />',
-        images: [ogImage]
-      }
-    }),
+  twitter: {
+    title: SITE_NAME!,
+    card: 'summary_large_image',
+    images: ['/opengraph-image.png'],
+    description: 'All about <theHoracle />',
+    // Include creator and site if available
+    ...(twitterCreator && { creator: twitterCreator }),
+    ...(twitterSite && { site: twitterSite })
+  },
   openGraph: {
     title: SITE_NAME!,
     description: "All about <theHoracle />",
-    url: baseUrl,
+    url: twitterSite,
     siteName: SITE_NAME!,
     images: [
       {
-        url: ogImage,
-        width: 1280,
-        height: 684,
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
         alt: 'James Morgan <theHoracle />'
       }
     ],
-    locale: 'en_US',
-    type: 'website'
   }
 };
 
@@ -71,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geist.className} ${geistMono.className} antialiased relative`}
       >
         <ThemeProvider
           attribute="class"

@@ -19,7 +19,7 @@ export const getScreenshots = async ({ url }: GetScreenshotsProps) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-        }); // Corrected to use response.url instead of `url`
+        });
 
         // Check the Content-Type to ensure it's JSON
         const contentType = imageResponse.headers.get('Content-Type');
