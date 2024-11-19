@@ -13,8 +13,7 @@ export const getScreenshots = async ({
         const response = await screenshotClient.generateTakeURL(takeScreenshotOptions({
             url
         }))
-        const { cache_url } = JSON.parse(response)
-        return cache_url
+        return response
     } catch (error) {
        console.log(error)
        return; 
