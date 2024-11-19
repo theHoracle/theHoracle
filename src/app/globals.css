@@ -110,7 +110,7 @@ body {
   }
   .reverse-fancy-button::before {
     content: "";
-    background: conic-gradient(from var(--rotate), transparent 0%, rgb(78, 8, 8) 5%, transparent 10%);
+    background: conic-gradient(from var(--rotate), transparent 0%, rgb(219, 29, 29) 5%, transparent 10%);
     position: absolute;
     inset: 0;
     animation: rotate 2s linear infinite;

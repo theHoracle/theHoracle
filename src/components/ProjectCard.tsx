@@ -1,3 +1,5 @@
+'use cache'
+import { getScreenshots } from "@/app/(projects)/action";
 import { Project } from "@/types";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
@@ -8,18 +10,23 @@ interface ProjectCardProps {
   project: Project;
 }
 
-function ProjectCard({ project }: ProjectCardProps) {
+async function ProjectCard({ project }: ProjectCardProps) {
+  const { homepage } = project;
+  const imageUrl = homepage ? await getScreenshots({
+                    url: homepage
+                  }) : null
+                  
   return (
     <div className="relative group grid grid-cols-8 grid-row-1  gap-4 pb-1 transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
       <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-6 lg:block lg:group-hover:bg-red-800/10 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
-      <div className="relative aspect-video col-span-8 md:col-span-3 lg:col-span-8 rounded-lg overflow-hidden shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg">
+      {imageUrl && <div className="relative aspect-video col-span-8 md:col-span-3 lg:col-span-8 rounded-lg overflow-hidden shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] drop-shadow-lg">
         <Image
-          src={project.imageUrl}
+          src={imageUrl}
           alt="thelatunji"
           fill
           className="object-cover object-center group-hover/link:filter"
         />
-      </div>
+      </div>}
       <div className="z-10 space-y-4 col-start-1 col-span-8  md:col-start-4 md:col-span-5 lg:col-start-1 lg:col-span-8">
         <Link
           href={project.homepage ?? "/"}

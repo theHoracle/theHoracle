@@ -16,7 +16,6 @@ export interface GitHubRepo {
 type Project = {
   title: string;
   description: string;
-  imageUrl: string;
   homepage: string | null;
   language: string | null;
   skills: string[];

@@ -20,7 +20,7 @@ function About() {
         </p>
         <p>
           {
-            "My toolkit includes essentials like Zustand, Vite, Next.js, Nuxt, PayloadCMS, Nestjs, and testing frameworks like Mocha and Jest. Plus, I'm experienced with Cloudflare D1 and AWS services for backend solutions. Recently, I've been involved in a project created with Go. Even though Go is new to me, this work has pushed my adaptability and problem-solving skills across new languages and platforms."
+            "My toolkit includes essentials like Vite, Next.js, Nuxt, PayloadCMS, Nestjs, Zustand, and testing frameworks like Mocha and Jest. Plus, I'm experienced with Cloudflare D1 and AWS services for backend and cloud solutions. Recently, I've been involved in a project created with Go. Even though Go is new to me, this work has pushed my adaptability and problem-solving skills across new languages and platforms."
           }
         </p>
         <p>

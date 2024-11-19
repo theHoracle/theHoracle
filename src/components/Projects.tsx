@@ -1,24 +1,30 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
 import { Project } from "@/types";
+import { title } from "process";
 
 function Projects() {
   const projects: Project[] = [
     {
+      title: "Donner Foundation Website",
+      description: "Charity organiation website with admin panel, to manage events, donations and blog content easily. Includes a payment provider (Paystack) to recieve donations.",
+      homepage: "https://donner-payload3b.vercel.app",
+      language: "typescript",
+      skills: ["PayloadCMSv3", "Nextjs", "Swiperjs", "MongoDB", "Firebase", "Tailwind CSS"],
+    },
+    {
       title: "Latunji Photography Portfolio",
       description: "A photography portfolio site, allowing the photographer to showcase projects, manage images, and update content easily. Includes a pricing section with default rates and flexible contact options for custom quotes.",
-      imageUrl: "/project-image/thelatunji.png",
       homepage: "https://photography-portfolio-kohl.vercel.app",
       language: "typescript",
-      skills: ["Prisma", "Nextjs", "Swiperjs", "PostgerSQL", "Firebase"],
+      skills: ["Prisma", "Nextjs", "Swiperjs", "PostgerSQL", "Firebase", "Tailwind CSS"],
     },
     {
       title: "Hope Chapel",
       description: "Web app that enables church staff to manage content, send newsletters to subscribers, and oversee team information and media uploads. Focused on easy updates and streamlined communication for the church community.",
-      imageUrl: "/project-image/hope-chapel.png",
       homepage: "https://hope-chapel-raleigh.vercel.app",
       language: "typescript",
-      skills: ["Nextjs", "Payload CMS", "Axios", "Docker", "AWS"],
+      skills: ["Nextjs", "PayloadCMSv2", "Axios", "Tailwind CSS", "Docker", "AWS"],
     },
   ];
 
@@ -32,7 +38,7 @@ function Projects() {
       <div>
         <ul className="space-y-16">
           {projects.map((project, index) => (
-            <li key={index}>
+            <li key={index+"."+title}>
               <ProjectCard project={project} />
             </li>
           ))}
