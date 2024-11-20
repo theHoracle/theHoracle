@@ -91,10 +91,10 @@ function InquiryForm() {
         <FormItem>
           <FormLabel>Subject</FormLabel>
           <FormControl>
-            <Input placeholder="What is yout reason for contacting us?" className="bg-background" {...field} />
+            <Input placeholder="What is your reason for contacting us?" className="bg-background" {...field} />
           </FormControl>
           <FormDescription>
-            Send a message, we will be sure to get back to you.
+            What do you want to talk about?
           </FormDescription>
           <FormMessage />
         </FormItem>
