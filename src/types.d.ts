@@ -14,6 +14,7 @@ export interface GitHubRepo {
 }
 
 type Project = {
+  imageUrl?: string | null;
   title: string;
   description: string;
   homepage: string | null;

@@ -7,6 +7,7 @@ type GetScreenshotsProps = {
 }
 
 export const getScreenshots = async ({ url }: GetScreenshotsProps) => {
+     
     try {
         // Generate the screenshot URL
         const response = await screenshotClient.generateTakeURL(

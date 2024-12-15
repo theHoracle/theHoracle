@@ -1,6 +1,14 @@
 import React from "react";
+import Icon from "./ui/render-icon";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+
 
 function About() {
+  const skills = ["nextjs-icon", "react", "tailwindcss-icon", "nuxt-icon",
+     "typescript-icon", "go" , "payload" , "nodejs", "nestjs", "expo-icon",
+     "aws", "docker-icon","postgresql", "mongodb-icon", "framer", "solidity",
+     "figma", "adobe-photoshop",
+    ]
   return (
     <section
       id="about"
@@ -14,20 +22,42 @@ function About() {
       </div>
       <div className="space-y-4">
         <p>
-          {
-            "Hi, I'm a Full Stack Engineer with over three years of experience building responsive, dynamic applications that combine robust functionality with great user experience. I've worked on projects like WakandaPay, a fintech platform, and a dynamic church website, and along the way, I've developed expertise with technologies like React, TypeScript, Python, and Node.js. I love tackling both frontend and backend challenges, and lately, I've been diving into mobile development with a React Native fintech app, sharpening my skills in areas like authentication and security using Expo."
-          }
+          Based 0.1x dev focused on building functional, efficient, 
+          and scalable web applications. I work across the frontend and backend, 
+          using tools cracked modern tools to create solutions that
+          address the unique challenges of modern application development.
         </p>
         <p>
-          {
-            "My toolkit includes essentials like Vite, Next.js, Nuxt, PayloadCMS, Nestjs, Zustand, and testing frameworks like Mocha and Jest. Plus, I'm experienced with Cloudflare D1 and AWS services for backend and cloud solutions. Recently, I've been involved in a project created with Go. Even though Go is new to me, this work has pushed my adaptability and problem-solving skills across new languages and platforms."
-          }
+          My passion lies in crafting seamless user experiences and meeting real-world needs.
+          From user-friendly interfaces to robust server-side systems, 
+          I bring a practical, results-driven approach to every project.
         </p>
-        <p>
-         {
-          "I'm always looking for opportunities—whether full-time or freelance—to collaborate with teams who value innovation and quality, creating scalable, user-centric solutions that make an impact."
-         }
-        </p>
+        <div
+        className="pt-8">
+          {/* skills */}
+          <h3 className="text-sm font-bold uppercase tracking-tightz text-slate-900 dark:text-slate-200 ">
+            Skills
+          </h3>
+          <ul className="flex flex-wrap items-center gap-2.5 my-3">
+            {skills.map((skill, index) => (
+              <li 
+              key={index}
+              className="border border-stone-300 dark:border-stone-900 rounded-md py-4 px-5 group flex items-center justify-center"
+              >
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Icon
+                      icon={`logos:${skill}`} 
+                      className="size-10 sm:invert group-hover:invert-0  transition-all"  />
+                    </TooltipTrigger>
+                    <TooltipContent className="bg-white text-stone-950 font-medium">{skill.split('-')[0].toLocaleUpperCase()}</TooltipContent>
+                </Tooltip>
+                </TooltipProvider>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

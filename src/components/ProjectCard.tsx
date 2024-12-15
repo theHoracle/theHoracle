@@ -1,4 +1,3 @@
-'use cache'
 import { getScreenshots } from "@/app/(projects)/action";
 import { Project } from "@/types";
 import { ArrowUpRight } from "lucide-react";
@@ -10,11 +9,8 @@ interface ProjectCardProps {
   project: Project;
 }
 
-async function ProjectCard({ project }: ProjectCardProps) {
-  const { homepage } = project;
-  const imageUrl = homepage ? await getScreenshots({
-                    url: homepage
-                  }) : null
+function ProjectCard({ project }: ProjectCardProps) {
+  const { imageUrl } = project
                   
   return (
     <div className="relative group grid grid-cols-8 grid-row-1  gap-4 pb-1 transition-all lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
