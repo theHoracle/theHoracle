@@ -38,11 +38,11 @@ function About() {
           <h3 className="text-sm font-bold uppercase tracking-tightz text-slate-900 dark:text-slate-200 ">
             Skills
           </h3>
-          <ul className="flex flex-wrap items-center gap-2.5 my-3">
+          <ul className="grid grid-cols-4 md:grid md:grid-cols-6 lg:grid lg:grid-cols-6 items-center gap-2.5 my-3 w-full ">
             {skills.map((skill, index) => (
               <li 
               key={index}
-              className="border border-stone-300 dark:border-stone-900 rounded-md py-4 px-5 group flex items-center justify-center"
+              className="border border-stone-300 dark:border-stone-900 aspect-square rounded-md py-4 px-5 group flex items-center justify-center"
               >
                 <TooltipProvider>
                   <Tooltip>
