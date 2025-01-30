@@ -1,31 +1,73 @@
-# [James Morgan] - Portfolio
+# James Morgan
 
-Welcome to my portfolio! Here you'll find a showcase of my work as a Full Stack Developer, including past projects and personal initiatives.
+> Software Engineer | Community Manger | Tech Educator | Web3 Enthusiast
 
-## About Me
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/jamesmorgan-thehoracle)
+[![Email](https://img.shields.io/badge/Email-Contact-red)](mailto:jamestheHoracle@gmail.com)
 
-I am a Full Stack Developer with over three years of experience building scalable and dynamic web applications. I have worked on a range of projects, from fintech apps like WakandaPay to creating management systems for organizations. I specialize in frontend technologies like React, TypeScript, and Node.js, while also having a strong background in backend development and cloud technologies like AWS and Cloudflare D1.
+## About me
 
-In addition to my professional work, I actively contribute to open-source projects, taking on bug bounties and enhancing my skills with Go-based applications. My passion lies in creating user-centered designs while focusing on performance, security, and scalability.
+Passionate about web technologies, I enjoy building scalable applications and exploring new tech stacks. I manage a thriving tech community, sharing knowledge and fostering collaboration. On my YouTube channel, I teach developers about modern web development. Currently, I'm diving into Web3, experimenting with smart contracts, and exploring the decentralized future.
 
-## Tech Stack
 
-Here are the technologies and tools I work with:
+## 🛠️ Technical Stack
 
-- **Frontend**: React, TypeScript, Redux, Next.js, TailwindCss, Nuxt, 
-- **Backend**: Node.js, Nest.js, Go (basic), Payload CMS, REST APIs, GraphQL
-- **Mobile**: React Native, Expo
-- **Cloud & DevOps**: AWS (SES, SNS, etc.), Cloudflare D1
-- **Testing**: Jest
-- **Tools**: Git, Webpack, Docker, VS Code, Xcode, Ngnix, Swagger
+```javascript
+const skills = {
+  languages: ["JavaScript", "TypeScript", "Go", "Python"],
+  frameworks: ["React", "Next.js", "Node.js", "NestJS", "Expo (React Native)", "PayloadCMS"],
+  databases: ["PostgreSQL", "MongoDB", "Cloudflare D1"],
+  cloud_services: ["AWS", "Azure", "Vercel", "Cloudflare"],
+  tools: ["Docker", "Nginx", "Swagger", "CI/CD (GitHub Actions)"],
+};
+```
 
-## Social Links
 
-- [LinkedIn](https://www.linkedin.com/in/jamesmorgan-thehoracle)
-- [X formerly Twitter](https://x.com/theHoracle)
-- [Mail](mailto:jamestheHoracle@gmail.com)
+## 🚀 Key Projects
 
-## Contact
+### Morgan and Sons Store
+An E-commerce app built with Nextjs and PayloadCMS on Vercel, with instant cart updates and management with secure payments
+
+- **GitHub**: [View Project](https://github.com/theHoracle/morgan-and-sons-shop)
+- **Website**: [View Live](https://morgan-and-sons-shop.vercel.app/)
+
+### Smart contracts on Ethereum
+Learning and deploying smart contracts on the Ethereum blockchain.
+
+- **GitHub**: [View Project](https://github.com/theHoracle/smart-contract)
+
+### Photography Portfolio
+Portfolio site for any photographer to showcase their projects and display their pricing with a builtin admin panel for updates and management.
+
+- **GitHub**: [View Project](https://github.com/theHoracle/Photography-portfolio)
+- **Website**: [View Live](https://photography-portfolio-kohl.vercel.app/)
+
+## 🎖️ Leadership & Community Impact  
+
+- **Tech Community Leader** – I manage a thriving tech community where I mentor and teach developers about web technologies, best practices, and career growth.  
+- **YouTube Educator** – I create videos on my YouTube channel, sharing insights on software development, Web3, and emerging technologies.  
+
+
+
+## 🎯 Professional Goals
+
+- Advancing in software development roles
+- Building impactful tech solutions
+- Continuous learning and skill development in latest technologies
+
+
+
+## 📺 YouTube Channel
+
+I recently started a YouTube channel where I share tech tutorials, project breakdowns, and insights into software development. Check out my latest video and subscribe for more content!
+
+[![YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?logo=youtube)](https://www.youtube.com/@thehoracle)
+
+## 📬 Connect With Me
+
+- **LinkedIn**: [in/jamesmorgan](https://www.linkedin.com/in/jamesmorgan-thehoracle)
+- **Email**: jamestheHoracle@gmail.com
+- **Portfolio**: [theHoracle.dev](https://thehoracledev.vercel.app/)
 
 Feel free to reach out if you'd like to collaborate or learn more about my work. I'm always open to exciting new opportunities!
 

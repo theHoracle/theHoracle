@@ -22,7 +22,7 @@ function About() {
       </div>
       <div className="space-y-4">
         <p>
-          Based 0.1x dev focused on building functional, efficient, 
+          Software dev focused on building functional, efficient, 
           and scalable web applications. I work across the frontend and backend, 
           using tools cracked modern tools to create solutions that
           address the unique challenges of modern application development.

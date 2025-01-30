@@ -33,11 +33,11 @@ function Header() {
         <h1 className="text-4xl font-bold tracking-tight text-stone-700 dark:text-stone-200 sm:text-5xl">
           <Link href="/">James Morgan</Link>
         </h1>
-        <h2 className="mt-3 text-lg font-medium tracking-tight text-stone-900 dark:text-stone-200 sm:text-xl">
-          Full-Stack Developer
+        <h2 className="mt-3 text-md font-medium tracking-tight text-stone-900 dark:text-stone-200 sm:text-lg">
+          Software Developer | Web Developer
         </h2>
         <p className="text-lg text-muted-foreground mt-4">
-          Innovating with next gen technologies.
+          Make the internet a better place one software at a time.
         </p>
         <SpecialNav />
       </div>
