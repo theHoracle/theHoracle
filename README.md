@@ -29,7 +29,7 @@ const skills = {
 An E-commerce app built with Nextjs and PayloadCMS on Vercel, with instant cart updates and management with secure payments
 
 - **GitHub**: [View Project](https://github.com/theHoracle/morgan-and-sons-shop)
-- **Website**: [View Live](https://morgan-and-sons-shop.vercel.app/)
+- **Website**: [View Live](https://morgan-and-sons-shop.vercel.app)
 
 ### Smart contracts on Ethereum
 Learning and deploying smart contracts on the Ethereum blockchain.

@@ -34,7 +34,7 @@ function Header() {
           <Link href="/">James Morgan</Link>
         </h1>
         <h2 className="mt-3 text-md font-medium tracking-tight text-stone-900 dark:text-stone-200 sm:text-lg">
-          Software Developer | Web Developer
+          Software Developer <span className="text-muted-foreground px-0.5"> | </span> Web Developer
         </h2>
         <p className="text-lg text-muted-foreground mt-4">
           Make the internet a better place one software at a time.
