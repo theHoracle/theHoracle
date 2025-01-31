@@ -1,6 +1,6 @@
 # James Morgan
 
-> Software Engineer | Community Manger | Tech Educator | Web3 Enthusiast
+> Software Engineer | Community Manager | Tech Educator | Web3 Enthusiast
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/jamesmorgan-thehoracle)
 [![Email](https://img.shields.io/badge/Email-Contact-red)](mailto:jamestheHoracle@gmail.com)
