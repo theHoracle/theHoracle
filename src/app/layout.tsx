@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: SITE_NAME!,
     template: `%s | ${SITE_NAME}`
   },
-  description: "Portfolio | Resume | Blog - James Morgan <theHoracle />",
+  description: "Design. Develop. Deliver. Everything Your Brand Needs to Grow.",
   metadataBase: new URL(twitterSite!),
   robots: {
     follow: true,
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geist.className} ${geistMono.className} antialiased relative`}
+        className={`${geist.className} ${geistMono.className} antialiased bg-background relative`}
       >
         <ThemeProvider
           attribute="class"

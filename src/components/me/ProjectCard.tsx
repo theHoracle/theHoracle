@@ -1,4 +1,4 @@
-import { getScreenshots } from "@/app/(projects)/action";
+import { getScreenshots } from "@/app/me/(projects)/action";
 import { Project } from "@/types";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";

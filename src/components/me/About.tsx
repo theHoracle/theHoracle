@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "./ui/render-icon";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
+import Icon from "../ui/render-icon";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 
 function About() {
