@@ -70,7 +70,16 @@
       transform: rotate(-5deg) scale(0.9);
     }
   }
-}
+  --animate-grid: grid 15s linear infinite
+;
+  @keyframes grid {
+  0% {
+    transform: translateY(-50%);
+    }
+  100% {
+    transform: translateY(0);
+    }
+  }}
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -261,5 +270,18 @@
   .dark .active .nav-text {
     --tw-text-opacity: 1;
     color: rgb(226 232 240 / var(--tw-text-opacity));
+  }
+}
+
+/*
+  ---break---
+*/
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
