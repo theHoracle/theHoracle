@@ -11,26 +11,27 @@ import { ShinyButton } from "./magicui/shiny-button"
 import { Button } from "./ui/button"
 
 const Hero = () => {
-    return <div className="w-full h-screen p-4">
-        <div className="relative rounded-xl bg-[url('/gradient-hero-prerender.avif')] bg-no-repeat bg-cover bg-center size-full py-10 px-10 shadow-lg">
-            <MorphingNavbar />        
-            <div className="flex items-center z-50 relative size-full justify-center py-20">
-                <div className="flex flex-col gap-4 items-center justify-center w-full">
-                    <AnimatedText />
-                    <HeadLine />
-                    <div className="flex flex-col gap-2 items-center">
-                        <InteractiveHoverButton>Get free quote</InteractiveHoverButton>
-                        
-                        <ShinyButton className="z-10 border border-accent/20 rounded-full">See our works</ShinyButton>
+    return (
+        <div className="w-full h-screen p-4">
+            <div className="relative rounded-xl bg-[url('/gradient-hero-prerender.avif')] bg-no-repeat bg-cover bg-center w-full h-full py-10 px-10 shadow-lg">
+                {/* Navbar positioned inside the hero content */}
+                <MorphingNavbar />
+                
+                <div className="flex items-center relative size-full justify-center py-20">
+                    <div className="flex flex-col gap-4 items-center justify-center w-full">
+                        <AnimatedText />
+                        <HeadLine />
+                        <div className="flex flex-col gap-2 items-center">
+                            <InteractiveHoverButton>Get free quote</InteractiveHoverButton>
+                            
+                            <ShinyButton className="z-10 border border-accent/20 rounded-full">See our works</ShinyButton>
+                        </div>
                     </div>
                 </div>
-
+                <RetroGrid darkLineColor="#f2f2f2" className="inset-0 z-10" />
             </div>
-            <RetroGrid darkLineColor="#f2f2f2" className="inset-0 z-10" />
-
-            
         </div>
-    </div>
+    )
 }
 
 export default Hero

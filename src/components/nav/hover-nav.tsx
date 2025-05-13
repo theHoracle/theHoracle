@@ -29,7 +29,7 @@ const HoverNav = () => {
     ]
 
 
-    return <div className="relative w-screen z-20 bg-slate-200 dark:bg-black backdrop-blur-xs p-2 shadow-lg md:w-[80%] mx-auto rounded-3xl h-16">
+    return <div className="relative w-screen z-50 bg-slate-200 dark:bg-black backdrop-blur-xs p-2 shadow-lg md:w-[80%] mx-auto rounded-3xl h-16">
         <div className="absolute flex items-center w-full h-full px-6 inset-0">
 
         <div className="">{"<TheHoracle />"}</div>

@@ -1,5 +1,14 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/autoplay';
 
 const categories = ["All", "Web Design", "Branding", "Print"];
 
@@ -50,6 +59,11 @@ const projects = [
 
 const Portfolio = () => {
     const [activeCategory, setActiveCategory] = useState("All");
+    const [isMounted, setIsMounted] = useState(false);
+    
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
     
     const filteredProjects = activeCategory === "All" 
         ? projects 
@@ -93,42 +107,106 @@ const Portfolio = () => {
                         </a>
                     </div>
                     
-                    {/* Right side - projects */}
+                    {/* Right side - projects with Swiper */}
                     <div className="md:w-3/4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {filteredProjects.map((project, index) => (
-                                <div 
-                                    key={project.id} 
-                                    className="group relative overflow-hidden h-[300px] bg-gray-100 dark:bg-gray-900 transform transition-all duration-500 hover:-translate-y-2"
-                                >
-                                    {/* Placeholder for project image */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900 group-hover:opacity-50 transition-opacity duration-500">
-                                        <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-600 text-lg">
-                                            {project.title} Image
-                                        </div>
-                                    </div>
-                                    
-                                    {/* Overlay that appears on hover */}
-                                    <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                                        <div className="bg-white/90 dark:bg-black/80 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
-                                            <div className="flex justify-between items-center mb-4">
-                                                <h3 className="text-xl font-bold">{project.title}</h3>
-                                                <span className="text-orange-500">{project.year}</span>
+                        {isMounted && (
+                            <Swiper
+                                effect={'coverflow'}
+                                grabCursor={true}
+                                centeredSlides={true}
+                                slidesPerView={'auto'}
+                                coverflowEffect={{
+                                    rotate: 50,
+                                    stretch: 0,
+                                    depth: 100,
+                                    modifier: 1,
+                                    slideShadows: true,
+                                }}
+                                pagination={{ clickable: true }}
+                                navigation={true}
+                                autoplay={{
+                                    delay: 3000,
+                                    disableOnInteraction: true,
+                                    pauseOnMouseEnter: true,
+                                }}
+                                modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+                                className="mySwiper"
+                            >
+                                {filteredProjects.map((project) => (
+                                    <SwiperSlide key={project.id} className="max-w-[350px] h-[400px]">
+                                        <div className="group relative overflow-hidden h-full w-full bg-gray-100 dark:bg-gray-900 transform transition-all duration-500">
+                                            {/* Placeholder for project image */}
+                                            <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900 group-hover:opacity-50 transition-opacity duration-500">
+                                                <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-600 text-lg">
+                                                    {project.title} Image
+                                                </div>
                                             </div>
-                                            <div className="flex justify-between items-center">
-                                                <span className="text-gray-600 dark:text-gray-400">{project.category}</span>
-                                                <a 
-                                                    href="#" 
-                                                    className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300"
-                                                >
-                                                    View
-                                                </a>
+                                            
+                                            {/* Overlay that appears on hover */}
+                                            <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                                <div className="bg-white/90 dark:bg-black/80 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
+                                                    <div className="flex justify-between items-center mb-4">
+                                                        <h3 className="text-xl font-bold">{project.title}</h3>
+                                                        <span className="text-orange-500">{project.year}</span>
+                                                    </div>
+                                                    <div className="flex justify-between items-center">
+                                                        <span className="text-gray-600 dark:text-gray-400">{project.category}</span>
+                                                        <a 
+                                                            href="#" 
+                                                            className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300"
+                                                        >
+                                                            View
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
+                        
+                        {/* Custom Swiper styles */}
+                        <style jsx global>{`
+                            .swiper {
+                                width: 100%;
+                                padding-top: 50px;
+                                padding-bottom: 80px;
+                            }
+                            
+                            .swiper-slide {
+                                background-position: center;
+                                background-size: cover;
+                                width: 350px;
+                                height: 400px;
+                                filter: blur(1px);
+                                transition: all 0.3s ease;
+                            }
+                            
+                            .swiper-slide-active {
+                                filter: blur(0);
+                                transform: scale(1.05);
+                            }
+                            
+                            .swiper-pagination-bullet {
+                                background: #f97316;
+                                opacity: 0.5;
+                            }
+                            
+                            .swiper-pagination-bullet-active {
+                                opacity: 1;
+                            }
+                            
+                            .swiper-button-next,
+                            .swiper-button-prev {
+                                color: #f97316;
+                            }
+                            
+                            /* Dark mode adjustments */
+                            .dark .swiper-pagination-bullet {
+                                background: #f97316;
+                            }
+                        `}</style>
                     </div>
                 </div>
             </div>

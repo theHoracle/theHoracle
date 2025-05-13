@@ -54,16 +54,16 @@ const MorphingNavbar = () => {
             {/* Desktop Navigation */}
             <div 
                 className={cn(
-                    "w-full z-50 transition-all duration-300 ease-in-out",
+                    "z-[9999] transition-all duration-300 ease-in-out",
                     isScrolled 
-                        ? "fixed top-0 left-0 bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg py-3 text-gray-900 dark:text-white" 
-                        : "relative bg-white dark:bg-black backdrop-blur-xs p-2 shadow-lg md:w-[80%] mx-auto rounded-3xl h-16"
+                        ? "fixed top-0 left-0 right-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg py-3 text-gray-900 dark:text-white dark:border-b dark:border-orange-500/20" 
+                        : "relative w-[80%] mx-auto bg-slate-200 dark:bg-black backdrop-blur-xs p-2 shadow-lg rounded-3xl h-16"
                 )}
+                style={{ 
+                    isolation: "isolate" // Creates a new stacking context
+                }}
             >
-                <div className={cn(
-                    "flex items-center w-full h-full px-6",
-                    isScrolled ? "max-w-7xl mx-auto" : "absolute inset-0"
-                )}>
+                <div className="flex items-center w-full h-full px-6">
                     {/* Logo */}
                     <div className="text-xl font-bold">
                         <Link href="/" className="hover:text-orange-500 transition-colors">
@@ -76,9 +76,9 @@ const MorphingNavbar = () => {
                         <NavigationMenu className="w-full">
                             <NavigationMenuList>
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className="bg-none">About</NavigationMenuTrigger>
+                                    <NavigationMenuTrigger className="bg-none dark:hover:bg-gray-800 dark:data-[state=open]:bg-gray-800">About</NavigationMenuTrigger>
                                     <NavigationMenuContent>
-                                        <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                                        <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] dark:bg-black">
                                             <li className="row-span-3">
                                                 <NavigationMenuLink asChild>
                                                     <a
@@ -108,9 +108,9 @@ const MorphingNavbar = () => {
                                 </NavigationMenuItem>
 
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                                    <NavigationMenuTrigger className="dark:hover:bg-gray-800 dark:data-[state=open]:bg-gray-800">Services</NavigationMenuTrigger>
                                     <NavigationMenuContent>
-                                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] dark:bg-black">
                                             {services.map((service) => (
                                                 <ListItem
                                                     key={service.title}
@@ -126,7 +126,7 @@ const MorphingNavbar = () => {
                                 
                                 <NavigationMenuItem>
                                     <Link href="/portfolio" legacyBehavior passHref>
-                                        <NavigationMenuLink className="font-medium">
+                                        <NavigationMenuLink className="font-medium dark:hover:bg-gray-800 dark:hover:text-white">
                                             Portfolio
                                         </NavigationMenuLink>
                                     </Link>
@@ -160,7 +160,7 @@ const MorphingNavbar = () => {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="fixed inset-0 z-40 bg-white dark:bg-black pt-16">
+                <div className="fixed inset-0 z-[9998] bg-white dark:bg-black pt-16">
                     <div className="flex flex-col p-6 space-y-6">
                         <Link 
                             href="/about" 
@@ -220,7 +220,7 @@ const ListItem = React.forwardRef<
                 <a
                     ref={ref}
                     className={cn(
-                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground dark:hover:bg-gray-800 dark:hover:text-white",
                         className
                     )}
                     {...props}
