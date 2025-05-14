@@ -97,10 +97,10 @@ const MorphingNavbar = () => {
                                             <ListItem href="/about" title="Our Story">
                                                 Learn about our journey and mission.
                                             </ListItem>
-                                            <ListItem href="/team" title="Our Team">
+                                            <ListItem href="/about/team" title="Our Team">
                                                 Meet the talented people behind our work.
                                             </ListItem>
-                                            <ListItem href="/process" title="Our Process">
+                                            <ListItem href="/about/process" title="Our Process">
                                                 How we approach projects and deliver results.
                                             </ListItem>
                                         </ul>
@@ -137,9 +137,11 @@ const MorphingNavbar = () => {
 
                     {/* Contact Button - Hidden on mobile */}
                     <div className="hidden md:block">
-                        <Button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
-                            Contact Us
-                        </Button>
+                        <Link href="/contact">
+                            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                                Contact Us
+                            </Button>
+                        </Link>
                     </div>
                     
                     {/* Mobile Menu Button */}
@@ -195,12 +197,16 @@ const MorphingNavbar = () => {
                         </Link>
                         <div className="py-2 border-b border-gray-200 dark:border-gray-800"></div>
                         
-                        <Button 
-                            className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full w-full mt-4"
+                        <Link 
+                            href="/contact"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
-                            Contact Us
-                        </Button>
+                            <Button 
+                                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full w-full mt-4"
+                            >
+                                Contact Us
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             )}

@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -30,19 +31,19 @@ const Footer = () => {
                         <h3 className="text-xl font-bold mb-8">Quick Links</h3>
                         <ul className="space-y-4">
                             <li>
-                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Home</a>
+                                <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Home</Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">About Us</a>
+                                <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">About Us</Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Services</a>
+                                <Link href="/services" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Services</Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Portfolio</a>
+                                <Link href="/portfolio" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Portfolio</Link>
                             </li>
                             <li>
-                                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Contact</a>
+                                <Link href="/contact" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">Contact</Link>
                             </li>
                         </ul>
                     </div>
@@ -75,12 +76,12 @@ const Footer = () => {
                         © {new Date().getFullYear()} TheHoracle. All rights reserved.
                     </p>
                     <div className="flex space-x-6">
-                        <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm transition-colors duration-300">
+                        <Link href="/privacy-policy" className="text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm transition-colors duration-300">
                             Privacy Policy
-                        </a>
-                        <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm transition-colors duration-300">
+                        </Link>
+                        <Link href="/terms-of-service" className="text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm transition-colors duration-300">
                             Terms of Service
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

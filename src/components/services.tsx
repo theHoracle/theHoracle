@@ -1,23 +1,27 @@
 import { Code2, Palette, Printer } from "lucide-react";
+import Link from "next/link";
 
 const services = [
     {
         title: "Web & Mobile Development",
         description: "Bringing the history of your brand to the forefront gives an emotional dimension to your visual identity, which is essential today more than ever in today's digital landscape.",
         icon: Code2,
-        letter: "W"
+        letter: "W",
+        href: "/services/web-design"
     },
     {
         title: "Branding & Design",
         description: "Bringing the history of your brand to the forefront gives an emotional dimension to your visual identity, which is essential today more than ever in today's digital landscape.",
         icon: Palette,
-        letter: "B"
+        letter: "B",
+        href: "/services/branding"
     },
     {
         title: "Printing Solutions",
         description: "Bringing the history of your brand to the forefront gives an emotional dimension to your visual identity, which is essential today more than ever in today's digital landscape.",
         icon: Printer,
-        letter: "P"
+        letter: "P",
+        href: "/services/printing"
     }
 ];
 
@@ -40,13 +44,13 @@ const Services = () => {
                                 <p className="text-gray-600 dark:text-gray-400 mb-8">
                                     {service.description}
                                 </p>
-                                <a 
-                                    href="#" 
+                                <Link 
+                                    href={service.href} 
                                     className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300 group"
                                 >
                                     <span className="mr-2">Know More</span>
                                     <div className="w-6 h-6 bg-orange-500 group-hover:bg-white transition-colors duration-300"></div>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     ))}

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
+import Link from "next/link";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -18,42 +19,48 @@ const projects = [
         title: "Luxury Brand Identity",
         category: "Branding",
         image: "/portfolio/project1.jpg",
-        year: "2023"
+        year: "2023",
+        slug: "artisan-coffee"
     },
     {
         id: 2,
         title: "E-Commerce Platform",
         category: "Web Design",
         image: "/portfolio/project2.jpg",
-        year: "2023"
+        year: "2023",
+        slug: "eco-marketplace"
     },
     {
         id: 3,
         title: "Corporate Stationery",
         category: "Print",
         image: "/portfolio/project3.jpg",
-        year: "2022"
+        year: "2022",
+        slug: "travel-magazine"
     },
     {
         id: 4,
         title: "Mobile App Design",
         category: "Web Design",
         image: "/portfolio/project4.jpg",
-        year: "2022"
+        year: "2022",
+        slug: "fitness-app"
     },
     {
         id: 5,
         title: "Restaurant Menu Design",
         category: "Print",
         image: "/portfolio/project5.jpg",
-        year: "2021"
+        year: "2021",
+        slug: "organic-food-delivery"
     },
     {
         id: 6,
         title: "Fashion Brand Identity",
         category: "Branding",
         image: "/portfolio/project6.jpg",
-        year: "2021"
+        year: "2021",
+        slug: "tech-conference"
     }
 ];
 
@@ -98,13 +105,13 @@ const Portfolio = () => {
                             ))}
                         </div>
                         
-                        <a 
-                            href="#" 
+                        <Link 
+                            href="/portfolio" 
                             className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300 group"
                         >
                             <span className="mr-2 font-medium">View All Projects</span>
                             <div className="w-6 h-6 bg-orange-500 group-hover:bg-white transition-colors duration-300"></div>
-                        </a>
+                        </Link>
                     </div>
                     
                     {/* Right side - projects with Swiper */}
@@ -151,12 +158,12 @@ const Portfolio = () => {
                                                     </div>
                                                     <div className="flex justify-between items-center">
                                                         <span className="text-gray-600 dark:text-gray-400">{project.category}</span>
-                                                        <a 
-                                                            href="#" 
+                                                        <Link 
+                                                            href={`/portfolio/${project.slug}`} 
                                                             className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300"
                                                         >
                                                             View
-                                                        </a>
+                                                        </Link>
                                                     </div>
                                                 </div>
                                             </div>
