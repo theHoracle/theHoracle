@@ -55,8 +55,8 @@ const portfolioItems = [
   // Additional portfolio items would be defined here
 ];
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const project = portfolioItems.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const project = portfolioItems.find(async (item) => item.slug === (await params).slug);
   
   if (!project) {
     return {
@@ -71,8 +71,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function PortfolioItemPage({ params }: { params: { slug: string } }) {
-  const project = portfolioItems.find((item) => item.slug === params.slug);
+export default function PortfolioItemPage({ params }: { params: Promise<{ slug: string }> }) {
+  const project = portfolioItems.find(async (item) => item.slug === (await params).slug);
   
   if (!project) {
     notFound();
