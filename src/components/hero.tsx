@@ -13,7 +13,7 @@ import { Button } from "./ui/button"
 const Hero = () => {
     return (
         <div className="w-full h-screen p-4">
-            <div className="relative rounded-xl bg-[url('/gradient-hero-prerender.avif')] bg-no-repeat bg-cover bg-center w-full h-full py-10 px-10 shadow-lg">
+            <div className="relative rounded-xl bg-[url('/gradient-hero-prerender.avif')] bg-no-repeat bg-cover bg-center w-full h-full py-10 px-4 md:px-10 shadow-lg">
                 {/* Navbar positioned inside the hero content */}
                 <MorphingNavbar />
                 

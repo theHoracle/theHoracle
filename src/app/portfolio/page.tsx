@@ -1,62 +1,20 @@
+"use client"
+import { useState, useEffect } from "react";
 import { Metadata } from "next";
 import Footer from "@/components/footer";
 import MorphingNavbar from "@/components/nav/morphing-navbar";
 import Link from "next/link";
+import { getProjectDetails } from "@/lib/utils/project-details";
 
-export const metadata: Metadata = {
-  title: "Portfolio | TheHoracle",
-  description: "Explore our portfolio of web design, branding, and digital projects for clients across various industries.",
-};
+const categories = ["All", "Web Design & Development", "UI/UX Design", "Branding", "Print Design", "Mobile Development"];
 
-const portfolioItems = [
-  {
-    title: "Eco Marketplace",
-    category: "Web Design & Development",
-    description: "A sustainable products marketplace with advanced filtering, user accounts, and secure checkout.",
-    image: "/portfolio-placeholder.jpg",
-    slug: "eco-marketplace"
-  },
-  {
-    title: "Fitness App",
-    category: "UI/UX Design",
-    description: "A mobile fitness application with workout tracking, nutrition planning, and progress visualization.",
-    image: "/portfolio-placeholder.jpg",
-    slug: "fitness-app"
-  },
+const hardcodedProjects = [
   {
     title: "Artisan Coffee",
     category: "Branding",
     description: "Complete brand identity for a specialty coffee roaster, including logo, packaging, and marketing materials.",
     image: "/portfolio-placeholder.jpg",
     slug: "artisan-coffee"
-  },
-  {
-    title: "Tech Conference",
-    category: "Web Design & Development",
-    description: "Event website with schedule builder, speaker profiles, and ticket purchasing functionality.",
-    image: "/portfolio-placeholder.jpg",
-    slug: "tech-conference"
-  },
-  {
-    title: "Real Estate Platform",
-    category: "Web Development",
-    description: "Property listing platform with advanced search, virtual tours, and agent communication tools.",
-    image: "/portfolio-placeholder.jpg",
-    slug: "real-estate-platform"
-  },
-  {
-    title: "Organic Food Delivery",
-    category: "Branding & Web Design",
-    description: "Brand identity and e-commerce website for a local organic food delivery service.",
-    image: "/portfolio-placeholder.jpg",
-    slug: "organic-food-delivery"
-  },
-  {
-    title: "Financial Dashboard",
-    category: "UI/UX Design",
-    description: "User-friendly financial analytics dashboard with customizable widgets and data visualization.",
-    image: "/portfolio-placeholder.jpg",
-    slug: "financial-dashboard"
   },
   {
     title: "Travel Magazine",
@@ -66,17 +24,90 @@ const portfolioItems = [
     slug: "travel-magazine"
   },
   {
-    title: "Healthcare App",
-    category: "Mobile Development",
-    description: "Patient-centered healthcare application for appointment scheduling, medication reminders, and telehealth.",
+    title: "Organic Food Delivery",
+    category: "Branding & Web Design",
+    description: "Brand identity and e-commerce website for a local organic food delivery service.",
     image: "/portfolio-placeholder.jpg",
-    slug: "healthcare-app"
-  }
+    slug: "organic-food-delivery"
+  },
+  // ...add other non-website projects as needed
 ];
 
-const categories = ["All", "Web Design & Development", "UI/UX Design", "Branding", "Print Design", "Mobile Development"];
+// export const metadata: Metadata = {
+//   title: "Portfolio | TheHoracle",
+//   description: "Explore our portfolio of web design, branding, and digital projects for clients across various industries.",
+// };
 
 export default function PortfolioPage() {
+  type PortfolioProject = {
+    title: string;
+    category: string;
+    description: string;
+    image: string;
+    slug: string;
+  };
+  const [websiteProjects, setWebsiteProjects] = useState<PortfolioProject[]>([]);
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [loading, setLoading] = useState(true);
+
+  // Static website projects for instant display
+  const staticWebsiteProjects: PortfolioProject[] = [
+    {
+      title: "Morgan and Sons Store",
+      category: "Web Design & Development",
+      description: "An E-commerce app built with Nextjs and PayloadCMS on Vercel, with instant cart updates and management with secure payments.",
+      image: "/portfolio-placeholder.jpg",
+      slug: "morgan-and-sons-store"
+    },
+    {
+      title: "Donner Foundation Website",
+      category: "Web Design & Development",
+      description: "Charity organiation website with admin panel, to manage events, donations and blog content easily. Includes a payment provider (Paystack) to recieve donations.",
+      image: "/portfolio-placeholder.jpg",
+      slug: "donner-foundation-website"
+    },
+    {
+      title: "Latunji Photography Portfolio",
+      category: "Web Design & Development",
+      description: "A photography portfolio site, allowing the photographer to showcase projects, manage images, and update content easily. Includes a pricing section with default rates and flexible contact options for custom quotes.",
+      image: "/portfolio-placeholder.jpg",
+      slug: "latunji-photography-portfolio"
+    },
+    {
+      title: "Hope Chapel",
+      category: "Web Design & Development",
+      description: "Web app that enables church staff to manage content, send newsletters to subscribers, and oversee team information and media uploads. Focused on easy updates and streamlined communication for the church community.",
+      image: "/portfolio-placeholder.jpg",
+      slug: "hope-chapel"
+    },
+  ];
+
+  // Show static website projects immediately
+  const [displayedWebsiteProjects, setDisplayedWebsiteProjects] = useState(staticWebsiteProjects);
+
+  useEffect(() => {
+    getProjectDetails().then((websiteProjectsRaw) => {
+      const websiteProjects = websiteProjectsRaw
+        .filter((project) => project.homepage)
+        .map((p) => ({
+          title: p.title,
+          category: "Web Design & Development",
+          description: p.description,
+          image: p.imageUrl || "/portfolio-placeholder.jpg",
+          slug: p.title.toLowerCase().replace(/\s+/g, "-"),
+        }));
+      setWebsiteProjects(websiteProjects);
+      setDisplayedWebsiteProjects(websiteProjects.length ? websiteProjects : staticWebsiteProjects);
+      setLoading(false);
+    });
+  }, []);
+
+  const allProjects = [...hardcodedProjects, ...displayedWebsiteProjects];
+  const filteredProjects =
+    activeCategory === "All"
+      ? allProjects
+      : allProjects.filter((item) => item.category === activeCategory);
+
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       <MorphingNavbar />
@@ -97,8 +128,9 @@ export default function PortfolioPage() {
             {categories.map((category, index) => (
               <button
                 key={index}
+                onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
-                  index === 0
+                  activeCategory === category
                     ? "bg-orange-500 text-white"
                     : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                 }`}
@@ -108,27 +140,34 @@ export default function PortfolioPage() {
             ))}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioItems.map((item, index) => (
-              <Link href={`/portfolio/${item.slug}`} key={index} className="group">
-                <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
-                  <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-orange-500 bg-opacity-0 group-hover:bg-opacity-90 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
-                      <span className="text-white font-bold text-lg">View Project</span>
-                    </div>
+          {/* Responsive grid for Portfolio Projects */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {loading ? (
+              <div className="col-span-3 text-center text-gray-500 dark:text-gray-400">Loading...</div>
+            ) : filteredProjects.length === 0 ? (
+              <div className="col-span-3 text-center text-gray-500 dark:text-gray-400">No projects found.</div>
+            ) : (
+              filteredProjects.map((item, index) => (
+                <Link href={`/portfolio/${item.slug}`} key={index} className="group relative rounded-2xl overflow-hidden shadow-md bg-gray-100 dark:bg-gray-800 transition-transform hover:scale-[1.03] focus:outline-none focus:ring-2 focus:ring-orange-500">
+                  {/* Project Image */}
+                  <div className="absolute inset-0 w-full h-full">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                    />
                   </div>
-                  <div className="p-6">
-                    <span className="text-orange-500 text-sm font-medium">{item.category}</span>
-                    <h2 className="text-xl font-bold mt-1 mb-3 text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors">
-                      {item.title}
-                    </h2>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {item.description}
-                    </p>
+                  {/* Overlay with Project Name on Hover */}
+                  <div className="absolute top-0 left-0 w-full px-4 py-3 bg-gradient-to-b from-black/80 to-transparent opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 z-10 flex items-start">
+                    <h2 className="text-lg font-bold text-white drop-shadow-lg">{item.title}</h2>
                   </div>
-                </div>
-              </Link>
-            ))}
+                  {/* Optionally, show category at the bottom right */}
+                  <div className="absolute bottom-3 right-4 bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg opacity-90 pointer-events-none">
+                    {item.category}
+                  </div>
+                </Link>
+              ))
+            )}
           </div>
           
           <div className="mt-20 bg-gray-100 dark:bg-gray-800 rounded-2xl p-8 md:p-12 text-center">

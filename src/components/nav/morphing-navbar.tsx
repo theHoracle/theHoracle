@@ -57,13 +57,13 @@ const MorphingNavbar = () => {
                     "z-[9999] transition-all duration-300 ease-in-out",
                     isScrolled 
                         ? "fixed top-0 left-0 right-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg py-3 text-gray-900 dark:text-white dark:border-b dark:border-orange-500/20" 
-                        : "relative w-[80%] mx-auto bg-slate-200 dark:bg-black backdrop-blur-xs p-2 shadow-lg rounded-3xl h-16"
+                        : "relative w-full md:w-[80%] mx-auto bg-slate-200 dark:bg-black backdrop-blur-xs p-2 shadow-lg rounded-3xl h-16"
                 )}
                 style={{ 
                     isolation: "isolate" // Creates a new stacking context
                 }}
             >
-                <div className="flex items-center w-full h-full px-6">
+                <div className="flex items-center w-full h-full px-2 md:px-6">
                     {/* Logo */}
                     <div className="text-xl font-bold">
                         <Link href="/" className="hover:text-orange-500 transition-colors">

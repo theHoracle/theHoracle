@@ -1,8 +1,9 @@
 "use client"
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, EffectCoverflow, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Link from "next/link";
+import { getProjectDetails } from "@/lib/utils/project-details";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -67,14 +68,39 @@ const projects = [
 const Portfolio = () => {
     const [activeCategory, setActiveCategory] = useState("All");
     const [isMounted, setIsMounted] = useState(false);
-    
+    const [websiteProjects, setWebsiteProjects] = useState<any[]>([]);
+
     useEffect(() => {
         setIsMounted(true);
+        // Fetch website projects from getProjectDetails
+        getProjectDetails().then((projects) => {
+            // Add a category and year for display, and a slug if needed
+            const mapped = projects.filter((p) => p.homepage).map((p, idx) => ({
+                id: `website-${idx}`,
+                title: p.title,
+                category: "Web Design",
+                image: p.imageUrl || "/portfolio-placeholder.jpg",
+                year: "2024",
+                slug: p.title.toLowerCase().replace(/\s+/g, "-")
+            }));
+            setWebsiteProjects(mapped);
+        });
     }, []);
-    
-    const filteredProjects = activeCategory === "All" 
-        ? projects 
-        : projects.filter(project => project.category === activeCategory);
+
+    // Replace hardcoded web design projects with websiteProjects
+    const mergedProjects = projects.map((project) => {
+        if (project.category === "Web Design") {
+            // Will be replaced below
+            return null;
+        }
+        return project;
+    }).filter(Boolean);
+    // Add website projects in place of the old ones
+    const allProjects = [...mergedProjects, ...websiteProjects];
+
+    const filteredProjects = activeCategory === "All"
+        ? allProjects
+        : allProjects.filter(project => project.category === activeCategory);
 
     return (
         <div className="w-full py-24 bg-white dark:bg-black text-gray-900 dark:text-white">
@@ -118,16 +144,13 @@ const Portfolio = () => {
                     <div className="md:w-3/4">
                         {isMounted && (
                             <Swiper
-                                effect={'coverflow'}
                                 grabCursor={true}
                                 centeredSlides={true}
-                                slidesPerView={'auto'}
-                                coverflowEffect={{
-                                    rotate: 50,
-                                    stretch: 0,
-                                    depth: 100,
-                                    modifier: 1,
-                                    slideShadows: true,
+                                slidesPerView={1.2}
+                                breakpoints={{
+                                  640: { slidesPerView: 1.2 },
+                                  768: { slidesPerView: 2 },
+                                  1024: { slidesPerView: 3 },
                                 }}
                                 pagination={{ clickable: true }}
                                 navigation={true}
@@ -136,19 +159,18 @@ const Portfolio = () => {
                                     disableOnInteraction: true,
                                     pauseOnMouseEnter: true,
                                 }}
-                                modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+                                modules={[Pagination, Navigation, Autoplay]}
                                 className="mySwiper"
                             >
                                 {filteredProjects.map((project) => (
-                                    <SwiperSlide key={project.id} className="max-w-[350px] h-[400px]">
-                                        <div className="group relative overflow-hidden h-full w-full bg-gray-100 dark:bg-gray-900 transform transition-all duration-500">
-                                            {/* Placeholder for project image */}
-                                            <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-800 dark:to-gray-900 group-hover:opacity-50 transition-opacity duration-500">
-                                                <div className="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-600 text-lg">
-                                                    {project.title} Image
-                                                </div>
-                                            </div>
-                                            
+                                    <SwiperSlide key={project.id} className="w-[500px] aspect-[16/9]">
+                                        <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-900">
+                                            {/* Project image */}
+                                            <img
+                                              src={project.image}
+                                              alt={project.title}
+                                              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
                                             {/* Overlay that appears on hover */}
                                             <div className="absolute inset-0 flex flex-col justify-end p-6 translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
                                                 <div className="bg-white/90 dark:bg-black/80 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">
@@ -172,51 +194,23 @@ const Portfolio = () => {
                                 ))}
                             </Swiper>
                         )}
-                        
-                        {/* Custom Swiper styles */}
-                        <style jsx global>{`
-                            .swiper {
-                                width: 100%;
-                                padding-top: 50px;
-                                padding-bottom: 80px;
-                            }
-                            
-                            .swiper-slide {
-                                background-position: center;
-                                background-size: cover;
-                                width: 350px;
-                                height: 400px;
-                                filter: blur(1px);
-                                transition: all 0.3s ease;
-                            }
-                            
-                            .swiper-slide-active {
-                                filter: blur(0);
-                                transform: scale(1.05);
-                            }
-                            
-                            .swiper-pagination-bullet {
-                                background: #f97316;
-                                opacity: 0.5;
-                            }
-                            
-                            .swiper-pagination-bullet-active {
-                                opacity: 1;
-                            }
-                            
-                            .swiper-button-next,
-                            .swiper-button-prev {
-                                color: #f97316;
-                            }
-                            
-                            /* Dark mode adjustments */
-                            .dark .swiper-pagination-bullet {
-                                background: #f97316;
-                            }
-                        `}</style>
                     </div>
                 </div>
             </div>
+            {/* Swiper custom styles for orange arrows and dots */}
+            <style jsx global>{`
+              .swiper-button-next,
+              .swiper-button-prev {
+                color: #f97316 !important;
+              }
+              .swiper-pagination-bullet {
+                background: #f97316 !important;
+                opacity: 0.5;
+              }
+              .swiper-pagination-bullet-active {
+                opacity: 1 !important;
+              }
+            `}</style>
         </div>
     );
 };
