@@ -6,7 +6,11 @@ const BrandServices = () => {
   return (
     <div className="w-full py-24 bg-white dark:bg-black text-gray-900 dark:text-white">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 flex items-center justify-center flex-col">
+        <div className="flex justify-center size-10 items-center -mb-3">
+         <BoySvg />
+        </div>
+       
           <h2 className="text-5xl font-bold mb-4">Conversion Centric</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Design that Turns visitors into customers
@@ -14,26 +18,6 @@ const BrandServices = () => {
         </div>
         
         {/* People illustrations */}
-        <div className="flex justify-center items-center mb-16">
-          <div className="flex overflow-hidden">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-              <div key={num} className="mx-2">
-                <div className="w-16 h-16 relative rounded-full overflow-hidden bg-gray-100 dark:bg-gray-800">
-                  <Image 
-                    src={`/person-${num}.svg`} 
-                    alt={`Person ${num}`}
-                    fill
-                    className="object-cover"
-                    onError={(e) => {
-                      // Fallback if image doesn't exist
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
         
         {/* Service cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -103,3 +87,21 @@ const BrandServices = () => {
 };
 
 export default BrandServices; 
+
+
+const BoySvg = () => {
+  return (
+<svg width="800px" height="800px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_901_3019)">
+<path d="M24 31H8H1C1 31 1.69 27.38 2 26C2.21 25.08 3 23 11 22C11 22 12 25 16 25C20 25 21 22 21 22C29 23 29.79 25.02 30 26C30.29 27.38 31 31 31 31H24Z" fill="#FFC44D"/>
+<path d="M23 8H22H10H9C9 4.13 12.13 1 16 1C19.87 1 23 4.13 23 8Z" fill="#668077"/>
+<path d="M22 8V11C22 14.87 19 18 16 18C13 18 10 14.87 10 11V8H22Z" fill="#FFE6EA"/>
+<path d="M1 31C1 31 1.687 27.379 2 26C2.208 25.083 3 23 11 22C11 22 12 25 16 25C20 25 21 22 21 22C29 23 29.792 25.021 30 26C30.294 27.384 31 31 31 31M10 11C10 14.866 13 18 16 18C19 18 22 14.866 22 11M8 30V31M24 30V31M6 8H23C23 4.134 19.866 1 16 1C12.134 1 9 4.134 9 8" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_901_3019">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>  )
+}

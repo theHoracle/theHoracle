@@ -301,8 +301,17 @@ const servicesData = {
   }
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = servicesData[params.slug as keyof typeof servicesData];
+
+// pre render all services
+export async function generateStaticParams() {
+  return Object.keys(servicesData).map((slug) => ({
+    slug: slug
+  }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const slug = (await params).slug;
+  const service = servicesData[slug as keyof typeof servicesData];
   
   if (!service) {
     return {
@@ -317,8 +326,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = servicesData[params.slug as keyof typeof servicesData];
+
+
+export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
+  const slug = (await params).slug;
+  const service = servicesData[slug as keyof typeof servicesData];
   
   if (!service) {
     notFound();

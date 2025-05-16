@@ -55,9 +55,17 @@ const portfolioItems = [
   // Additional portfolio items would be defined here
 ];
 
+// pre render all portfolio items
+export async function generateStaticParams() {
+  return portfolioItems.map((item) => ({
+    slug: item.slug
+  }));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const project = portfolioItems.find(async (item) => item.slug === (await params).slug);
-  
+  const slug = (await params).slug;
+  const project = portfolioItems.find((item) => item.slug === slug);
+
   if (!project) {
     return {
       title: "Project Not Found | TheHoracle",
@@ -71,8 +79,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default function PortfolioItemPage({ params }: { params: Promise<{ slug: string }> }) {
-  const project = portfolioItems.find(async (item) => item.slug === (await params).slug);
+export default async function PortfolioItemPage({ params }: { params: Promise<{ slug: string }> }) {
+  const slug = (await params).slug;
+  const project = portfolioItems.find((item) => item.slug === slug);
   
   if (!project) {
     notFound();

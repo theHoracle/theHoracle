@@ -30,7 +30,7 @@ export const takeScreenshotOptions = ({
     .blockAds(true)
     .format(format)
     .cache(true)
-    .cacheTtl(648000) // 7.5 days
+    .cacheTtl(8640000) // 100 days
     .blockCookieBanners(true)
     .blockTrackers(true)
     .imageQuality(quality)
