@@ -1,7 +1,22 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import { SocialIcon } from "react-social-icons";
 
 const Footer = () => {
+    const socialLinks = [
+        {
+            name: "Instagram",
+            url: "https://instagram.com/the.horacle",
+        },
+        {
+            name: "X (Twitter)",
+            url: "https://x.com/thehoracle",
+        },
+        {
+            name: "LinkedIn",
+            url: "https://linkedin.com/company/thehoracle",
+        },
+    ]
     return (
         <footer className="bg-white dark:bg-black text-gray-900 dark:text-white pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-4">
@@ -12,18 +27,11 @@ const Footer = () => {
                             We combine creativity, code, and craftsmanship to bring ideas to life across web, mobile, and print.
                         </p>
                         <div className="flex space-x-4">
-                            <a href="#" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors duration-300">
-                                <Facebook size={18} />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors duration-300">
-                                <Twitter size={18} />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors duration-300">
-                                <Instagram size={18} />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors duration-300">
-                                <Linkedin size={18} />
-                            </a>
+                            {
+                                socialLinks.map((link => (
+                                    <SocialIcon url={link.url} />
+                                )))
+                            }
                         </div>
                     </div>
                     
@@ -57,15 +65,15 @@ const Footer = () => {
                             </li>
                             <li className="flex items-center">
                                 <Phone className="mr-4 text-orange-500 flex-shrink-0" size={18} />
-                                <a href="tel:+1234567890" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
-                                    +1 (234) 567-890
-                                </a>
+                                <Link href="tel:+2348132564274" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                                    +234 (813)-2564-274
+                                </Link>
                             </li>
                             <li className="flex items-center">
                                 <Mail className="mr-4 text-orange-500 flex-shrink-0" size={18} />
-                                <a href="mailto:info@thehoracle.com" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
-                                    info@thehoracle.com
-                                </a>
+                                <Link href="mailto:jamesthehoracle@gmail.com" className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                                    JamesTheHoracle@gmail.com
+                                </Link>
                             </li>
                         </ul>
                     </div>

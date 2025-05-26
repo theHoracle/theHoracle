@@ -135,10 +135,10 @@ const Portfolio = () => {
                     <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-4 max-w-2xl mx-auto px-4">
                         {categoryInfo[activeCategory]?.description}
                     </p>
-                    <Link 
-                        href={categoryInfo[activeCategory]?.link} 
+                    <Link
+                        href={categoryInfo[activeCategory]?.link}
                         className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300 group"
-                    >
+                        legacyBehavior>
                         <span className="mr-2 font-medium">See More</span>
                         <div className="w-4 h-4 md:w-6 md:h-6 bg-orange-500 group-hover:bg-white transition-colors duration-300"></div>
                     </Link>
@@ -192,10 +192,10 @@ const Portfolio = () => {
                                                 </div>
                                                 <div className="flex justify-between items-center">
                                                     <span className="text-xs md:text-base text-gray-600 dark:text-gray-400">{project.category}</span>
-                                                    <Link 
-                                                        href={`/portfolio/${project.slug}`} 
+                                                    <Link
+                                                        href={`/portfolio/${project.slug}`}
                                                         className="text-sm md:text-base inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300"
-                                                    >
+                                                        legacyBehavior>
                                                         View
                                                     </Link>
                                                 </div>

@@ -44,10 +44,10 @@ const Services = () => {
                                 <p className="text-gray-600 dark:text-gray-400 mb-8">
                                     {service.description}
                                 </p>
-                                <Link 
-                                    href={service.href} 
+                                <Link
+                                    href={service.href}
                                     className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300 group"
-                                >
+                                    legacyBehavior>
                                     <span className="mr-2">Know More</span>
                                     <div className="w-6 h-6 bg-orange-500 group-hover:bg-white transition-colors duration-300"></div>
                                 </Link>

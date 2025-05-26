@@ -5,7 +5,7 @@ import Link from "next/link";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "../ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import React from "react";
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -69,7 +69,10 @@ const MorphingNavbar = () => {
                 <div className="flex items-center w-full h-full px-2 md:px-6">
                     {/* Logo */}
                     <div className="text-xl font-bold">
-                        <Link href="/" className="hover:text-orange-500 transition-colors">
+                        <Link
+                            href="/"
+                            className="hover:text-orange-500 transition-colors"
+                            >
                             {"<TheHoracle />"}
                         </Link>
                     </div>
@@ -83,18 +86,13 @@ const MorphingNavbar = () => {
                                     <NavigationMenuContent>
                                         <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] dark:bg-black">
                                             <li className="row-span-3">
-                                                <NavigationMenuLink asChild>
-                                                    <a
-                                                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                                        href="/"
-                                                    >
+                                                <NavigationMenuLink href="/" className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
                                                         <div className="mb-2 mt-4 text-lg font-medium">
                                                             TheHoracle
                                                         </div>
                                                         <p className="text-sm leading-tight text-muted-foreground">
                                                             Beautifully designed branding designs built with love and care.
                                                         </p>
-                                                    </a>
                                                 </NavigationMenuLink>
                                             </li>
                                             <ListItem href="/about" title="Our Story">
@@ -128,7 +126,7 @@ const MorphingNavbar = () => {
                                 </NavigationMenuItem>
                                 
                                 <NavigationMenuItem>
-                                    <Link href="/portfolio" legacyBehavior passHref>
+                                    <Link href="/portfolio"  passHref>
                                         <NavigationMenuLink className="font-medium dark:hover:bg-gray-800 dark:hover:text-white">
                                             Portfolio
                                         </NavigationMenuLink>
@@ -140,10 +138,8 @@ const MorphingNavbar = () => {
 
                     {/* Contact Button - Hidden on mobile */}
                     <div className="hidden md:block">
-                        <Link href="/contact">
-                            <Button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full">
+                        <Link href="/contact" className={cn(buttonVariants(), "bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full")}>
                                 Contact Us
-                            </Button>
                         </Link>
                     </div>
                     
@@ -155,7 +151,6 @@ const MorphingNavbar = () => {
                     </div>
                 </div>
             </div>
-
             {/* Mobile Menu */}
             {isMobile && (
                 <SheetContent side="right" className=" dark:bg-black pt-16">
@@ -176,8 +171,7 @@ const MorphingNavbar = () => {
                                     key={service.title}
                                     href={service.href}
                                     className="block py-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-
-                                >
+                                    legacyBehavior>
                                     {service.title}
                                 </Link>
                             ))}
@@ -193,15 +187,8 @@ const MorphingNavbar = () => {
                         </Link>
                         <div className="py-2 border-b border-gray-200 dark:border-gray-800"></div>
                         
-                        <Link 
-                            href="/contact"
-
-                        >
-                            <Button 
-                                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full w-full mt-4"
-                            >
+                        <Link href="/contact" className={cn(buttonVariants({}) , "bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full w-full mt-4")}>
                                 Contact Us
-                            </Button>
                         </Link>
                     </div>
                 </SheetContent>
@@ -213,27 +200,27 @@ const MorphingNavbar = () => {
 export default MorphingNavbar;
 
 const ListItem = React.forwardRef<
-    React.ElementRef<"a">,
-    React.ComponentPropsWithoutRef<"a">
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
-    return (
-        <li>
-            <NavigationMenuLink asChild>
-                <a
-                    ref={ref}
-                    className={cn(
-                        "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground dark:hover:bg-gray-800 dark:hover:text-white",
-                        className
-                    )}
-                    {...props}
-                >
-                    <div className="text-sm font-medium leading-none">{title}</div>
-                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                        {children}
-                    </p>
-                </a>
-            </NavigationMenuLink>
-        </li>
-    );
-});
-ListItem.displayName = "ListItem"; 
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  )
+})
+ListItem.displayName = "ListItem"

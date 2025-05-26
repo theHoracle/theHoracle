@@ -80,11 +80,13 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       <MorphingNavbar />
-      
       <div className="pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-12">
-            <Link href="/portfolio" className="text-orange-500 hover:text-orange-600 flex items-center mb-6">
+            <Link
+              href="/portfolio"
+              className="text-orange-500 hover:text-orange-600 flex items-center mb-6"
+              legacyBehavior>
               <ArrowLeftIcon />
               Back to Portfolio
             </Link>
@@ -105,9 +107,9 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
           <div className="grid grid-cols-1 relative lg:grid-cols-3 gap-16 mb-16">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Overview</h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-8 text-lg">
+              <div className="text-gray-600 dark:text-gray-300 mb-8 text-lg">
                 <RichText data={project.projectOverview} />
-              </p>
+              </div>
             </div>
 
             {project.projectDetails && (
@@ -130,7 +132,7 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
           {/* Next/Prev Projects */}
           <div className="border-t border-gray-200 dark:border-gray-800 pt-12">
             <div className="flex flex-col md:flex-row justify-between">
-              <Link href="/portfolio" className="mb-8 md:mb-0">
+              <Link href="/portfolio" className="mb-8 md:mb-0" legacyBehavior>
                 <div className="group">
                   <span className="text-sm text-gray-500 dark:text-gray-400 block mb-2">Previous Project</span>
                   <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors">
@@ -139,7 +141,7 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
                 </div>
               </Link>
               
-              <Link href="/contact">
+              <Link href="/contact" legacyBehavior>
                 <div className="group text-right">
                   <span className="text-sm text-gray-500 dark:text-gray-400 block mb-2">Like what you see?</span>
                   <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors">
@@ -151,7 +153,6 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
           </div>
         </div>
       </div>
-      
       <Footer />
     </main>
   );

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Contact Us | TheHoracle",
@@ -15,7 +16,6 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       <MorphingNavbar />
-      
       <div className="py-10 md:py-14 lg:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-5xl font-bold text-center mb-8 text-gray-900 dark:text-white">
@@ -28,7 +28,7 @@ export default function ContactPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-4 lg:gap-16">
             <div className="lg:col-span-2">
               <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-8">
                 <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Send Us a Message</h2>
@@ -131,9 +131,9 @@ export default function ContactPage() {
                     <div className="ml-4">
                       <h3 className="font-medium text-gray-900 dark:text-white">Address</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        123 Design Street<br />
-                        Creative City, 10001<br />
-                        United States
+                        
+                        Shomolu, Lagos<br />
+                        Nigeria
                       </p>
                     </div>
                   </li>
@@ -142,9 +142,9 @@ export default function ContactPage() {
                     <div className="ml-4">
                       <h3 className="font-medium text-gray-900 dark:text-white">Phone</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        <a href="tel:+1234567890" className="hover:text-orange-500 transition-colors">
-                          +1 (234) 567-890
-                        </a>
+                      <Link href="tel:+2348132564274" className="hover:text-orange-500 transition-colors">
+                          +234 (813) 2564-274
+                      </Link>
                       </p>
                     </div>
                   </li>
@@ -153,9 +153,9 @@ export default function ContactPage() {
                     <div className="ml-4">
                       <h3 className="font-medium text-gray-900 dark:text-white">Email</h3>
                       <p className="text-gray-600 dark:text-gray-300">
-                        <a href="mailto:info@thehoracle.com" className="hover:text-orange-500 transition-colors">
-                          info@thehoracle.com
-                        </a>
+                        <Link href="mailto:jamesthehoracle@gmail.com" className="hover:text-orange-500 transition-colors">
+                          JamesTheHoracle@gmail.com
+                        </Link>
                       </p>
                     </div>
                   </li>
@@ -189,7 +189,6 @@ export default function ContactPage() {
           <div className="mt-16 w-full aspect-[21/9] bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
         </div>
       </div>
-      
       <Footer />
     </main>
   );

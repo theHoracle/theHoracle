@@ -63,11 +63,13 @@ export default function TeamPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       <MorphingNavbar />
-      
       <div className="py-10 md:py-14 lg:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-16">
-            <Link href="/about" className="text-orange-500 hover:text-orange-600 flex items-center mb-6">
+            <Link
+              href="/about"
+              className="text-orange-500 hover:text-orange-600 flex items-center mb-6"
+              legacyBehavior>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
@@ -113,7 +115,6 @@ export default function TeamPage() {
           </div>
         </div>
       </div>
-      
       <Footer />
     </main>
   );

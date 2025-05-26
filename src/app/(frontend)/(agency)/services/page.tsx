@@ -84,7 +84,6 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-black">
       <MorphingNavbar />
-      
       <div className="py-10 md:py-14 lg:py-20">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-5xl font-bold text-center mb-8 text-gray-900 dark:text-white">
@@ -115,10 +114,10 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-                <Link 
+                <Link
                   href={`/services/${service.slug}`}
                   className="inline-flex items-center text-orange-500 font-medium group-hover:text-orange-600"
-                >
+                  legacyBehavior>
                   Learn more
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -155,7 +154,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </div>
-      
       <Footer />
     </main>
   );
