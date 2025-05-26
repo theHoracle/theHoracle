@@ -171,7 +171,7 @@ const MorphingNavbar = () => {
                                     key={service.title}
                                     href={service.href}
                                     className="block py-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                                    legacyBehavior>
+                                    >
                                     {service.title}
                                 </Link>
                             ))}

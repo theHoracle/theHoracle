@@ -86,7 +86,7 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
             <Link
               href="/portfolio"
               className="text-orange-500 hover:text-orange-600 flex items-center mb-6"
-              legacyBehavior>
+              >
               <ArrowLeftIcon />
               Back to Portfolio
             </Link>
@@ -132,7 +132,7 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
           {/* Next/Prev Projects */}
           <div className="border-t border-gray-200 dark:border-gray-800 pt-12">
             <div className="flex flex-col md:flex-row justify-between">
-              <Link href="/portfolio" className="mb-8 md:mb-0" legacyBehavior>
+              <Link href="/portfolio" className="mb-8 md:mb-0">
                 <div className="group">
                   <span className="text-sm text-gray-500 dark:text-gray-400 block mb-2">Previous Project</span>
                   <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors">
@@ -141,7 +141,7 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
                 </div>
               </Link>
               
-              <Link href="/contact" legacyBehavior>
+              <Link href="/contact" >
                 <div className="group text-right">
                   <span className="text-sm text-gray-500 dark:text-gray-400 block mb-2">Like what you see?</span>
                   <span className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors">
@@ -161,16 +161,13 @@ export default async function PortfolioItemPage({ params }: { params: Promise<{ 
 
 type GalleryImage = Project["gallery"]
 
-export function GalleryGrid({className, images}: {className?: string, images: GalleryImage}) {
+function GalleryGrid({className, images}: {className?: string, images: GalleryImage}) {
   return (
-    <section id="photos" className="my-20">
-      <div className="flex flex-col items-center justify-center gap-2 mb-10 capitalize">
+    <section id="photos" className="my-16">
       <h2 className="text-4xl text-center text-stone-950 items-center dark:text-stone-50 font-serif">
-        Events Gallery
+        Project Gallery
       </h2>
-      <p className="text-center text-stone-500">Premium DJ Services in Action - Venues, Crowds & Unforgettable Nights</p>
-      </div>
-
+   
       <div className={cn("columns-2 gap-4 sm:columns-3", className)}>
         {images?.map((image, idx) => { 
           return  <BlurFade key={image.id} delay={0.25 + idx * 0.05} inView>

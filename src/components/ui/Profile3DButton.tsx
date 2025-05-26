@@ -7,7 +7,7 @@ export default function Profile3DButton() {
     <Link
       href="/me"
       className="group inline-block focus:outline-none"
-      legacyBehavior>
+      >
       <span
         className="relative flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-br from-slate-100 to-slate-300 dark:from-slate-800 dark:to-slate-900 shadow-2xl border border-slate-200 dark:border-slate-700 transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_8px_32px_rgba(0,0,0,0.25)] focus:ring-2 focus:ring-primary/60"
         style={{ perspective: "600px" }}

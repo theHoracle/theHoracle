@@ -345,7 +345,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <Link
               href="/services"
               className="text-orange-500 hover:text-orange-600 flex items-center mb-6"
-              legacyBehavior>
+              >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
@@ -424,7 +424,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                     href={`/portfolio/${caseStudy.slug}`}
                     key={index}
                     className="group"
-                    legacyBehavior>
+                    >
                     <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden">
                       <div className="aspect-[16/9] bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
                         <div className="absolute inset-0 bg-orange-500 bg-opacity-0 group-hover:bg-opacity-90 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
@@ -453,7 +453,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               {service.relatedServices.map((slug, index) => {
                 const relatedService = servicesData[slug as keyof typeof servicesData];
                 return (
-                  <Link href={`/services/${slug}`} key={index} className="group" legacyBehavior>
+                  <Link href={`/services/${slug}`} key={index} className="group" >
                     <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg">
                       <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-orange-500 transition-colors">
                         {relatedService.title}

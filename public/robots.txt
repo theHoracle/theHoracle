@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://the-horacle.vercel.app
+
+# Sitemaps
+Sitemap: https://the-horacle.vercel.app/sitemap.xml

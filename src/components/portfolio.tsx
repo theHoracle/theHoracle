@@ -138,7 +138,7 @@ const Portfolio = () => {
                     <Link
                         href={categoryInfo[activeCategory]?.link}
                         className="inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300 group"
-                        legacyBehavior>
+                        >
                         <span className="mr-2 font-medium">See More</span>
                         <div className="w-4 h-4 md:w-6 md:h-6 bg-orange-500 group-hover:bg-white transition-colors duration-300"></div>
                     </Link>
@@ -195,7 +195,7 @@ const Portfolio = () => {
                                                     <Link
                                                         href={`/portfolio/${project.slug}`}
                                                         className="text-sm md:text-base inline-flex items-center text-gray-900 dark:text-white hover:text-orange-500 transition-colors duration-300"
-                                                        legacyBehavior>
+                                                        >
                                                         View
                                                     </Link>
                                                 </div>

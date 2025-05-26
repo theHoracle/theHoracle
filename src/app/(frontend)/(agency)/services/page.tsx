@@ -117,7 +117,7 @@ export default function ServicesPage() {
                 <Link
                   href={`/services/${service.slug}`}
                   className="inline-flex items-center text-orange-500 font-medium group-hover:text-orange-600"
-                  legacyBehavior>
+                  >
                   Learn more
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>

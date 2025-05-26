@@ -28,7 +28,7 @@ function ProjectCard({ project }: ProjectCardProps) {
           href={project.homepage ?? "/"}
           target="_blank"
           className="inline-flex items-baseline font-medium leading-tight text-stone-700 dark:text-stone-200 hover:text-red-500 dark:hover:text-red-300 focus-visible:text-red-500  group/link text-base"
-          legacyBehavior>
+          >
           <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block" />
           <span className="text-xl font-medium tracking-tight leading-3">
             {project.title}
