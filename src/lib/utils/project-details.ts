@@ -1,5 +1,5 @@
  
-import { getScreenshots } from "@/app/me/(projects)/action";
+import { getScreenshots } from "@/app/(frontend)/(personal)/me/(projects)/action";
 import { Project } from "@/types";
 
 const projects: Project[] = [

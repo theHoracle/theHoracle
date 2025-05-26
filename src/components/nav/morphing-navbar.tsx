@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { Button } from "../ui/button";
 import { Menu, X } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const services: { title: string; href: string; description: string }[] = [
     {
@@ -33,7 +35,7 @@ const services: { title: string; href: string; description: string }[] = [
 
 const MorphingNavbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -50,14 +52,15 @@ const MorphingNavbar = () => {
     }, []);
 
     return (
-        <>
+        <Sheet>
             {/* Desktop Navigation */}
+            {!isScrolled && <div className="h-5" />}
             <div 
                 className={cn(
-                    "z-[9999] transition-all duration-300 ease-in-out",
+                    "z-30 transition-all duration-300  ease-in-out h-16 bg-white/95 dark:bg-black backdrop-blur-sm shadow-lg  text-gray-900 dark:text-white",
                     isScrolled 
-                        ? "fixed top-0 left-0 right-0 w-full bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-lg py-3 text-gray-900 dark:text-white dark:border-b dark:border-orange-500/20" 
-                        : "relative w-full md:w-[80%] mx-auto bg-slate-200 dark:bg-black backdrop-blur-xs p-2 shadow-lg rounded-3xl h-16"
+                        ? "fixed top-0 left-0 right-0 w-full py-3  dark:border-b dark:border-orange-500/20" 
+                        : "relative w-[95%] md:w-[80%] mx-auto border  border-orange-500/20  backdrop-blur-xs p-2 shadow-lg rounded-3xl "
                 )}
                 style={{ 
                     isolation: "isolate" // Creates a new stacking context
@@ -146,28 +149,21 @@ const MorphingNavbar = () => {
                     
                     {/* Mobile Menu Button */}
                     <div className="ml-auto md:hidden">
-                        <button
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="p-2 text-gray-900 dark:text-white focus:outline-none"
-                        >
-                            {isMobileMenuOpen ? (
-                                <X className="h-6 w-6" />
-                            ) : (
-                                <Menu className="h-6 w-6" />
-                            )}
-                        </button>
+                        <SheetTrigger asChild>
+                            <Menu className="h-6 w-6" />
+                        </SheetTrigger>
                     </div>
                 </div>
             </div>
 
             {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className="fixed inset-0 z-[9998] bg-white dark:bg-black pt-16">
+            {isMobile && (
+                <SheetContent side="right" className=" dark:bg-black pt-16">
                     <div className="flex flex-col p-6 space-y-6">
                         <Link 
                             href="/about" 
                             className="text-xl font-medium text-gray-900 dark:text-white hover:text-orange-500 transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
+
                         >
                             About
                         </Link>
@@ -180,7 +176,7 @@ const MorphingNavbar = () => {
                                     key={service.title}
                                     href={service.href}
                                     className="block py-1 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+
                                 >
                                     {service.title}
                                 </Link>
@@ -191,7 +187,7 @@ const MorphingNavbar = () => {
                         <Link 
                             href="/portfolio" 
                             className="text-xl font-medium text-gray-900 dark:text-white hover:text-orange-500 transition-colors"
-                            onClick={() => setIsMobileMenuOpen(false)}
+
                         >
                             Portfolio
                         </Link>
@@ -199,7 +195,7 @@ const MorphingNavbar = () => {
                         
                         <Link 
                             href="/contact"
-                            onClick={() => setIsMobileMenuOpen(false)}
+
                         >
                             <Button 
                                 className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full w-full mt-4"
@@ -208,9 +204,9 @@ const MorphingNavbar = () => {
                             </Button>
                         </Link>
                     </div>
-                </div>
+                </SheetContent>
             )}
-        </>
+        </Sheet>
     );
 };
 

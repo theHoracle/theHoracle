@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { sendContactMeMail } from "@/app/me/(contact-me)/action";
+import { sendContactMeMail } from "@/app/(frontend)/(personal)/me/(contact-me)/action";
 import { useToast } from "@/hooks/use-toast";
 
 function Contact() {
